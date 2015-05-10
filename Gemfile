@@ -12,6 +12,8 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'sdoc', group: :doc
 
+gem 'devise'
+
 
 group :development, :test do
   gem 'guard'
