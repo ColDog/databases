@@ -53,7 +53,9 @@ class CoursesController < ApplicationController
                              :dates,
                              :year,
                              :price,
-                             :location
+                             :location,
+                             :title,
+                             :about
     )
   end
 

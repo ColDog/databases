@@ -8,6 +8,8 @@ class CreateCourses < ActiveRecord::Migration
       t.integer :year,      null: false
       t.integer :price,     null: false
       t.string  :location,  null: false
+      t.string  :title,     null: false
+      t.text    :about,     null: false
 
       t.timestamps null: false
     end

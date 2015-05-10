@@ -1,0 +1,12 @@
+<h1>Edit Course</h1>
+<%= form_for @course do |f| %>
+	<%= f.text_field :title, placeholder: 'title' %>
+	<%= f.text_area  :about, placeholder: 'about' %>
+	<%= f.text_field :location, placeholder: 'location' %>
+	<%= f.text_field :code, placeholder: 'course code' %>
+	<%= f.text_field :category, placeholder: 'category' %>
+	<%= f.text_field :size, placeholder: 'class size' %>
+	<%= f.text_field :dates, placeholder: 'course dates' %>
+	<%= f.text_field :year, placeholder: 'year' %>
+	<%= f.text_field :price, placeholder: 'price' %>
+<% end %>

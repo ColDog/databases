@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20150510052603) do
     t.integer  "year",       null: false
     t.integer  "price",      null: false
     t.string   "location",   null: false
+    t.string   "title",      null: false
+    t.text     "about",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
