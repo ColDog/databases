@@ -1,0 +1,11 @@
+<%= form_for @course do |f| %>
+	<%= f.text_field :title, 		placeholder: 'title',					class: 'form-control' %>
+	<%= f.text_area  :about, 		placeholder: 'about',					class: 'form-control' %>
+	<%= f.text_field :location, placeholder: 'location',			class: 'form-control' %>
+	<%= f.text_field :code, 		placeholder: 'course code',		class: 'form-control' %>
+	<%= f.text_field :category, placeholder: 'category',			class: 'form-control' %>
+	<%= f.text_field :size, 		placeholder: 'class size',		class: 'form-control' %>
+	<%= f.text_field :dates, 		placeholder: 'course dates',	class: 'form-control' %>
+	<%= f.text_field :year, 		placeholder: 'year',					class: 'form-control' %>
+	<%= f.text_field :price, 		placeholder: 'price',					class: 'form-control' %>
+<% end %>

@@ -1,2 +1,12 @@
-<h1>Registration#register</h1>
-<p>Find me in app/views/registration/register.html.erb</p>
+<h1>Registration</h1>
+
+<% @courses.each do |course| %>
+	<%= course.code %> <%= course.category %> <%= course.size %>
+	-----
+<% end %>
+
+<%= form_for @register do |f| %>
+	<%= f.text_field :course, placeholder: 'course', class: 'form-control' %>
+	<%= f.submit 'Submit', class: 'btn' %>
+<% end %>
+
