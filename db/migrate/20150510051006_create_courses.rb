@@ -4,10 +4,10 @@ class CreateCourses < ActiveRecord::Migration
       t.string  :code,      null: false, index: true
       t.string  :category,  null: false
       t.integer :size,      null: false
-      t.string  :dates
-      t.string  :year
-      t.integer :price
-      t.string  :location
+      t.string  :dates,     null: false
+      t.integer :year,      null: false
+      t.integer :price,     null: false
+      t.string  :location,  null: false
 
       t.timestamps null: false
     end

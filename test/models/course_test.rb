@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class CourseTest < ActiveSupport::TestCase
-  test 'db_no_name' do
-    course = Course.new()
+
+  def setup
+    @course = Course.new(code: 'AC21', category: 'escape', size: 16, dates: 'march 20 - 25, 9 - 12', year: 2015, price: 330, location: 'Jericho')
   end
+
+  test 'valid save' do
+    assert @course.save
+  end
+
 end

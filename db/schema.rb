@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20150510052603) do
     t.string   "code",       null: false
     t.string   "category",   null: false
     t.integer  "size",       null: false
-    t.string   "dates"
-    t.string   "year"
-    t.integer  "price"
-    t.string   "location"
+    t.string   "dates",      null: false
+    t.integer  "year",       null: false
+    t.integer  "price",      null: false
+    t.string   "location",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150510052603) do
   add_index "courses", ["code"], name: "index_courses_on_code", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                                null: false
+    t.string   "name",                   default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
