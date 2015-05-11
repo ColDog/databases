@@ -1,15 +1,15 @@
 class CreateCourses < ActiveRecord::Migration
   def change
     create_table :courses do |t|
-      t.string  :code,      null: false, index: true
-      t.string  :category,  null: false
-      t.integer :size,      null: false
-      t.string  :dates,     null: false
-      t.integer :year,      null: false
-      t.integer :price,     null: false
-      t.string  :location,  null: false
-      t.string  :title,     null: false
-      t.text    :about,     null: false
+      t.string  :code,      index: true
+      t.string  :category
+      t.integer :size
+      t.string  :dates
+      t.integer :year
+      t.integer :price
+      t.string  :location
+      t.string  :title
+      t.text    :about
 
       t.timestamps null: false
     end
