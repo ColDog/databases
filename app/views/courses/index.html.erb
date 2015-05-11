@@ -1,5 +1,6 @@
 <h1>Course Index</h1>
-<% @courses.each do |course| %>
-	<%= course.code %> <%= course.category %> <%= course.size %>
-	-----
-<% end %>
+<table class="table">
+	<% @courses.each do |course| %>
+		<tr><td><%= course.title %></td> <td><%= course.code %></td> <td><%= course.size %></td> <td><%= course.dates %></td> <td><%= course.category %></td> </tr>
+	<% end %>
+</table>

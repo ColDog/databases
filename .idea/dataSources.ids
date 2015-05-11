@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails macsailing: development" uuid="508f60da-44b4-4356-83e9-9fc56fc7bd6d">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails macsailing: test" uuid="18a480be-d033-4623-ab1c-d75d5114e0cf">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails macsailing: production" uuid="b9b1e63a-ef3c-47c5-8b7d-837e9e5de2a4">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
