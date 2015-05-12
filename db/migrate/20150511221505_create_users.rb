@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :phone
       t.text    :health_notes
       t.string  :password_digest
+      t.boolean :staff, default: false
+      t.boolean :admin, default: false
 
       t.timestamps null: false
     end

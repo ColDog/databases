@@ -14,4 +14,27 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+
+  # logs out the current user
+  def log_out
+    session.delete(:user_id)
+    @current_user = nil
+  end
+
+  # helper for logged in user
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = 'Please Log In'
+      redirect_to login_url
+    end
+  end
+
+  # helper for logged in admin user
+  def logged_in_admin
+    unless current_user.admin?
+      flash[:danger] = 'Please Log In'
+      redirect_to login_url
+    end
+  end
+
 end

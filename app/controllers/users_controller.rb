@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:index, :show, :edit, :update]
+  before_action :logged_in_admin, only: [:index, :show, :edit, :update]
 
   def new
     @user = User.new
@@ -7,7 +9,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = 'Thanks for signing up!'
+      log_in @user
+      flash[:success] = 'Thanks for registering, complete the process here'
       redirect_to new_class_list_path
     else
       render 'new'
@@ -15,9 +18,21 @@ class UsersController < ApplicationController
   end
 
   # admin only
-
   def index
-    @users = User.all
+    query = params[:search]
+    if query.blank?
+      @users = User.all
+    else
+      query = params[:search].downcase
+      search = User.where('lower(name) like ? OR lower(email) like ?', "%#{query}%", "%#{query}%")
+      if search.empty?
+        @users = User.all
+        flash.now[:danger] = 'No Result Found for search'
+      else
+        @users = search
+        flash.now[:success] = "Search results for #{query}"
+      end
+    end
   end
 
   def show

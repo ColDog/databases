@@ -8,7 +8,7 @@
 	<%= f.email_field :email, class: 'form-control' %>
 
 	<%= f.label :'phone number (required)' %>
-	<%= f.text_field :phone, placeholder: 'format: 6042247245', class: 'form-control' %>
+	<%= f.text_field :phone, placeholder: '6042247245', class: 'form-control', maxlength: '10' %>
 
 	<%= f.label :age %>
 	<%= f.number_field :age, class: 'form-control' %>

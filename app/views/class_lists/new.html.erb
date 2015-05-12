@@ -1,16 +1,54 @@
 <h1>Sign Up For Courses</h1>
+<%= render 'shared/class_error_messages' %>
 
-<table class="table">
-	<% @courses.each do |course| %>
-		<tr>
-			<td><h4><%= course.title %></h4></td>
-			<td><%= course.about %></td>
-			<td><%= course.dates %></td>
-			<%= form_for @class_list do |f| %>
-				<%= f.hidden_field :course_id, value: course.id %>
-				<%= f.hidden_field :user_id, value: current_user.id %>
-				<td><%= f.submit 'Sign Up', class: 'btn btn-default' %></td>
-			<% end %>
-		</tr>
-	<% end %>
-</table>
+<% @courses.each do |group, course_list| %>
+
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading<%= group %>">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= group %>" aria-expanded="true" aria-controls="collapse<%= group %>">
+						<%= group %>
+					</a>
+				</h4>
+			</div>
+
+			<div id="collapse<%= group %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= group %>">
+				<div class="panel-body">
+					<table class="table" id="<%= group %>">
+						<thead>
+						<tr>
+							<th>Course</th>
+							<th>Code</th>
+							<th>Description</th>
+							<th>Dates</th>
+							<th>Sign Up!</th>
+						</tr>
+						</thead>
+						<% course_list.each do |course| %>
+							<tr></tr>
+							<tr>
+								<td><strong><%= course.title %></strong></td>
+								<td><%= course.code %></td>
+								<td><%= course.about %></td>
+								<td><%= course.dates %></td>
+								<%= form_for @class_list do |f| %>
+									<%= f.hidden_field :course_id, value: course.id %>
+									<%= f.hidden_field :user_id, value: current_user.id %>
+									<% if course.class_lists.count >= course.size %>
+										<td><strong>Class Full!</strong></td>
+									<% else %>
+										<td><%= f.submit 'Sign Up', class: 'btn btn-primary btn-xs' %></td>
+									<% end %>
+								<% end %>
+							</tr>
+						<% end %>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+<% end %>

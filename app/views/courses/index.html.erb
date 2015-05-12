@@ -1,23 +1,29 @@
 <h1>Course Index</h1>
 <table class="table">
-	<tr>
-		<td>Title</td>
-		<td>Category</td>
-		<td>Code</td>
-		<td>Max Size</td>
-		<td>Current Size</td>
-		<td>Dates</td>
-		<td>Action</td>
-	</tr>
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Code</th>
+			<th>Title</th>
+			<th>Category</th>
+			<th>Boat</th>
+			<th>Max Size</th>
+			<th>Current Size</th>
+			<th>Dates</th>
+			<th>Action</th>
+		</tr>
+	</thead>
 	<% @courses.each do |course| %>
 		<tr>
+			<td><%= course.id %></td>
+			<td><%= course.code %></td>
 			<td><%= course.title %></td>
 			<td><%= course.category %></td>
-			<td><%= course.code %></td>
+			<td><%= course.boat %></td>
 			<td><%= course.size %></td>
 			<td><%= course.class_lists.count %></td>
 			<td><%= course.dates %></td>
-			<td><%= link_to 'Class List', course_path(course.id) %></td>
+			<td><%= link_to 'Class List', course_path(course.id) %> | <%= link_to 'Delete', course, method: :delete %> | <%= link_to 'Edit', edit_course_path(course.id) %>  </td>
 		</tr>
 	<% end %>
 </table>

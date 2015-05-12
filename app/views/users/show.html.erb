@@ -4,15 +4,17 @@
 
 <table class="table">
 	<thead>
-	<tr>
-		<th>Course</th>
-		<th>Location</th>
-		<th>Dates</th>
-		<th>Paid</th>
-	</tr>
+		<tr>
+			<th>Code</th>
+			<th>Course</th>
+			<th>Location</th>
+			<th>Dates</th>
+			<th>Paid</th>
+		</tr>
 	</thead>
 	<% @user_classes.each do |c| %>
 		<tr>
+			<td><%= c.course.code %></td>
 			<td><%= c.course.title %></td>
 			<td><%= c.course.location %></td>
 			<td><%= c.course.dates %></td>

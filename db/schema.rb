@@ -51,8 +51,10 @@ ActiveRecord::Schema.define(version: 20150511221821) do
     t.string   "phone"
     t.text     "health_notes"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "staff",           default: false
+    t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_foreign_key "class_lists", "courses"

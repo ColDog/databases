@@ -1,7 +1,8 @@
 class ClassListsController < ApplicationController
+  before_action :logged_in_user
 
   def new
-    @courses = Course.all
+    @courses = Course.all.group_by(&:category)
     @class_list = ClassList.new
   end
 
@@ -11,8 +12,8 @@ class ClassListsController < ApplicationController
       flash[:success] = 'Successfully signed up for class'
       redirect_to user_path(current_user.id)
     else
-      flash[:danger] = 'Failed to sign up for class'
-      redirect_to user_path(current_user.id)
+      flash[:danger] = 'Class is full or you have already signed up'
+      redirect_to new_class_list_path
     end
   end
 
