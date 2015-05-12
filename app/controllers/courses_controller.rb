@@ -61,7 +61,10 @@ class CoursesController < ApplicationController
                              :price,
                              :location,
                              :title,
-                             :about
+                             :about,
+                             :age_group,
+                             :start_date,
+                             :end_date
     )
   end
 

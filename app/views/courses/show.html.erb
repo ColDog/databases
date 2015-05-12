@@ -26,7 +26,7 @@
 		<td><%= c.user.health_notes %></td>
 		<td><%= c.created_at %></td>
 		<td>
-			<%= form_for c, url: class_lists_path(c.id), html: { method: :post } do |f| %>
+			<%= form_for c, url: class_lists_path(c.id), html: { method: :post }, class: 'inline-form' do |f| %>
 				<%= f.check_box :paid %>
 				<%= f.submit 'Edit', class: 'btn btn-default btn-xs' %>
 			<% end %>

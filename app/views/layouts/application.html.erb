@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <%= render 'layouts/headnav' %>
 <% flash.each do |message_type, message| %>
 	<div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -17,23 +18,24 @@
 		<h1>MacSailing</h1>
 		<h3>Sailing Lessons in Vancouver</h3>
 		<div class="center">
-			<h4>Lessons</h4>
-			<%= link_to 'Lessons', lessons_path, class: 'btn btn-primary' %>
-			<%= link_to 'Beginner', beginner_path, class: 'btn btn-primary' %>
-			<%= link_to 'Intermediate', intermed_path, class: 'btn btn-primary' %>
-			<%= link_to 'Advanced', advanced_path, class: 'btn btn-primary' %>
-		</div>
-		<div class="center">
-			<h4>Other</h4>
-			<%= link_to 'Groups', lessons_path, class: 'btn btn-primary' %>
-			<%= link_to 'Rentals', lessons_path, class: 'btn btn-primary' %>
+			<%= link_to 'Adult Lessons', adult_path, class: 'btn btn-primary' %>
+			<%= link_to 'Youth Lessons', youth_path, class: 'btn btn-primary' %>
+			<%= link_to 'Groups', groups_path, class: 'btn btn-primary' %>
+			<%= link_to 'Rentals', rentals_path, class: 'btn btn-primary' %>
 		</div>
 	</div>
-
 <% end %>
 
 <div class="container-fluid">
 	<%= yield %>
+</div>
+
+<div class="params">
+	<pre>
+		<code>
+			<%= debug(params) %>
+		</code>
+	</pre>
 </div>
 
 </body>

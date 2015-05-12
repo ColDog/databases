@@ -2,15 +2,11 @@ Rails.application.routes.draw do
 
 
   # static pages and information
-  root        'home#home'
-  get         'lessons'   => 'home#lessons'
-  get         'beginner'  => 'home#beginner'
-  get         'intermed'  => 'home#intermediate'
-  get         'advanced'  => 'home#advanced'
-  get         'groups'    => 'home#groups'
-  get         'rentals'   => 'home#rentals'
-  get         'about'     => 'home#about'
-  get         'weather'   => 'home#weather'
+  root        'main#home'
+  get         'adult'     => 'main#adult'
+  get         'youth'     => 'main#youth'
+  get         'groups'    => 'main#groups'
+  get         'rentals'   => 'main#rentals'
 
   # courses
   resources   :courses

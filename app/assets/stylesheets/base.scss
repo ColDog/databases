@@ -12,13 +12,9 @@ body {padding-top: 50px;}
 }
 
 
-.left { float: left !important; width: 30px;}
-.right { float: right !important; width: 50px;}
-form {display: inline-block;}
-
-.alone-form {
-  .btn { border-radius: 0 !important; display: inline-block !important;}
-  .inline-form { width: 100px !important; display: inline-block !important; margin-top: 1em; }
-  label {margin-top: 1.5em;}
-  .form-group, input {margin-right: 2em !important; display: inline-block;}
+.btn { border-radius: 0 !important; }
+.inline-form { width: 100px !important; display: inline-block !important; }
+label {margin-top: 1.5em;}
+.form-group { display: inline-block !important;
+  input {margin-right: 2em !important; display: inline-block !important;}
 }
