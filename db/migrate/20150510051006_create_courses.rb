@@ -3,6 +3,7 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.string  :code,      index: true
       t.string  :category
+      t.string  :boat
       t.integer :size
       t.string  :dates
       t.integer :year

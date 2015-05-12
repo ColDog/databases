@@ -1,8 +1,9 @@
 class CreateClassLists < ActiveRecord::Migration
   def change
     create_table :class_lists do |t|
-      t.references :user, index: true
-      t.references :course, index: true
+      t.references  :user,    index: true
+      t.references  :course,  index: true
+      t.boolean     :paid,    default: false
 
       t.timestamps null: false
     end

@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @class_list = Course.find(params[:id]).class_lists
   end
 
   def new
@@ -52,6 +53,7 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(
                              :code,
+                             :boat,
                              :category,
                              :size,
                              :dates,

@@ -1,2 +1,19 @@
-<h1>Show Course</h1>
-<%= @course.code %> <%= @course.category %> <%= @course.size %>
+<h1><%= @course.title %></h1>
+<h5><%= @course.dates %></h5>
+<h5><%= @course.category %> <%= @course.code %> Max Size: <%= @course.size %></h5>
+<hr>
+<table class="table">
+	<tr><td>Number</td><td>User Id</td><td>Course ID</td><td>Signed Up On</td><td>Paid</td></tr>
+<% @class_list.each do |c| %>
+	<% count = 1 %>
+	<tr>
+
+		<td><%= count.to_s %></td>
+		<td><%= c.user_id %></td>
+		<td><%= c.course_id %></td>
+		<td><%= c.created_at %></td>
+		<td><%= c.paid.to_s %></td>
+	</tr>
+	<% count += 1 %>
+<% end %>
+</table>

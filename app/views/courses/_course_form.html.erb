@@ -1,11 +1,32 @@
 <%= form_for @course do |f| %>
-	<%= f.text_field :title, 		placeholder: 'title',					class: 'form-control' %>
-	<%= f.text_area  :about, 		placeholder: 'about',					class: 'form-control' %>
-	<%= f.text_field :location, placeholder: 'location',			class: 'form-control' %>
-	<%= f.text_field :code, 		placeholder: 'course code',		class: 'form-control' %>
-	<%= f.text_field :category, placeholder: 'category',			class: 'form-control' %>
-	<%= f.text_field :size, 		placeholder: 'class size',		class: 'form-control' %>
-	<%= f.text_field :dates, 		placeholder: 'course dates',	class: 'form-control' %>
-	<%= f.text_field :year, 		placeholder: 'year',					class: 'form-control' %>
-	<%= f.text_field :price, 		placeholder: 'price',					class: 'form-control' %>
+	<%= render 'shared/course_error_messages' %>
+	<%= f.label :title %>
+	<%= f.text_field :title, 		class: 'form-control' %>
+
+	<%= f.label 	:category %>
+	<%= f.select 	:category, options_for_select(%w"Beginner Intermediate Advanced"),   class: 'form-control' %>
+	<%= f.label 	:location %>
+	<%= f.select 	:location, options_for_select(%w"Jericho Kitsilano"), class: 'form-control' %>
+	<%= f.label 	:boat %>
+	<%= f.select 	:boat, options_for_select(%w"Pirate Escape Opti Advanced"), class: 'form-control' %>
+	<br>
+
+	<%= f.label :about %>
+	<%= f.text_area  :about, 		class: 'form-control' %>
+
+	<%= f.label :code %>
+	<%= f.text_field :code, 		class: 'form-control', maxlength: 4 %>
+
+	<%= f.label :size %>
+	<%= f.text_field :size, 		class: 'form-control' %>
+
+	<%= f.label :dates %>
+	<%= f.text_field :dates, 		class: 'form-control' %>
+
+	<%= f.label :year %>
+	<%= f.text_field :year, 		class: 'form-control', maxlength: 4 %>
+
+	<%= f.label :price %>
+	<%= f.text_field :price, 		class: 'form-control' %>
+	<%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>

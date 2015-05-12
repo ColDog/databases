@@ -1,7 +1,0 @@
-<h1>Registration</h1>
-
-
-<%= form_for current_user.class_lists.build,  url: courses_path(current_user.class_lists.build), html: { method: :post } do |f| %>
-	<%= f.text_field :course, placeholder: 'course code', class: 'form-control' %>
-	<%= f.submit 'Submit', class: 'btn btn-primary' %>
-<% end %>

@@ -1,0 +1,16 @@
+<h1>Sign Up For Courses</h1>
+
+<table class="table">
+	<% @courses.each do |course| %>
+		<tr>
+			<td><h4><%= course.title %></h4></td>
+			<td><%= course.about %></td>
+			<td><%= course.dates %></td>
+			<%= form_for @class_list do |f| %>
+				<%= f.hidden_field :course_id, value: course.id %>
+				<%= f.hidden_field :user_id, value: current_user.id %>
+				<td><%= f.submit 'Sign Up', class: 'btn btn-default' %></td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>

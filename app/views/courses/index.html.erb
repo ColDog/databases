@@ -1,6 +1,23 @@
 <h1>Course Index</h1>
 <table class="table">
+	<tr>
+		<td>Title</td>
+		<td>Category</td>
+		<td>Code</td>
+		<td>Max Size</td>
+		<td>Current Size</td>
+		<td>Dates</td>
+		<td>Action</td>
+	</tr>
 	<% @courses.each do |course| %>
-		<tr><td><%= course.title %></td> <td><%= course.code %></td> <td><%= course.size %></td> <td><%= course.dates %></td> <td><%= course.category %></td> </tr>
+		<tr>
+			<td><%= course.title %></td>
+			<td><%= course.category %></td>
+			<td><%= course.code %></td>
+			<td><%= course.size %></td>
+			<td><%= course.class_lists.count %></td>
+			<td><%= course.dates %></td>
+			<td><%= link_to 'Class List', course_path(course.id) %></td>
+		</tr>
 	<% end %>
 </table>
