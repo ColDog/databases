@@ -1,32 +1,54 @@
-<%= form_for @course do |f| %>
+<%= form_for @course, class: 'alone-form' do |f| %>
 	<%= render 'shared/course_error_messages' %>
 	<%= f.label :title %>
 	<%= f.text_field :title, 		class: 'form-control' %>
 
+	<div class="form-group">
 	<%= f.label 	:category %>
 	<%= f.select 	:category, options_for_select(%w"Beginner Intermediate Advanced"),   class: 'form-control' %>
+	</div>
+	<div class="form-group">
 	<%= f.label 	:location %>
 	<%= f.select 	:location, options_for_select(%w"Jericho Kitsilano"), class: 'form-control' %>
+	</div>
+	<div class="form-group">
 	<%= f.label 	:boat %>
 	<%= f.select 	:boat, options_for_select(%w"Pirate Escape Opti Advanced"), class: 'form-control' %>
+	</div>
+	<div class="form-group">
+	<%= f.label 	:age_group %>
+	<%= f.select	:age_group, options_for_select(%w"5-7 7-10 10-14 11-16 13-18 8-16 Adult"), class: 'form-control' %>
+	</div>
+	<br>
+	<div class="form-group">
+		<%= f.label :start_date %>
+		<%= f.date_select :start_date, discard_year: true %>
+	</div>
+	<div class="form-group">
+		<%= f.label :end_date %>
+		<%= f.date_select :end_date, discard_year: true %>
+	</div>
+	<div class="form-group">
+		<%= f.label :year %>
+		<%= f.date_select :year, discard_month: true, discard_day: true, class: 'form-control', maxlength: 4 %>
+	</div>
+	<br>
+
+	<%= f.label :size %>
+	<%= f.number_field :size, 		class: 'form-control inline-form', maxlength: 2 %>
+
+	<%= f.label :code %>
+	<%= f.text_field :code, 		class: 'form-control inline-form', maxlength: 4 %>
+
+	<%= f.label :'Price $' %>
+	<%= f.number_field :price, 		class: 'form-control inline-form', maxlength: 4 %>
 	<br>
 
 	<%= f.label :about %>
 	<%= f.text_area  :about, 		class: 'form-control' %>
 
-	<%= f.label :code %>
-	<%= f.text_field :code, 		class: 'form-control', maxlength: 4 %>
-
-	<%= f.label :size %>
-	<%= f.text_field :size, 		class: 'form-control' %>
-
-	<%= f.label :dates %>
+	<%= f.label :display_dates %>
 	<%= f.text_field :dates, 		class: 'form-control' %>
 
-	<%= f.label :year %>
-	<%= f.text_field :year, 		class: 'form-control', maxlength: 4 %>
-
-	<%= f.label :price %>
-	<%= f.text_field :price, 		class: 'form-control' %>
 	<%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>

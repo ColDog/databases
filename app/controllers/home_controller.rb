@@ -5,15 +5,23 @@ class HomeController < ApplicationController
 
   # LESSONS
   def lessons
+    @courses = Course.all
+    @class_list = ClassList.new
   end
 
   def beginner
+    @course = Course.where('category = ?', 'beginner')
+    @class_list = ClassList.new
   end
 
   def intermediate
+    @courses = Course.where('category = ?', 'intermediate')
+    @class_list = ClassList.new
   end
 
   def advanced
+    @courses = Course.where('category = ?', 'advanced')
+    @class_list = ClassList.new
   end
 
 

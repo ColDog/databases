@@ -12,7 +12,8 @@
 			<th>Age</th>
 			<th>Health Notes</th>
 			<th>Created At</th>
-			<th>Recieved Payment</th>
+			<th>Paid</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 <% @class_list.each do |c| %>
@@ -24,7 +25,19 @@
 		<td><%= c.user.age %></td>
 		<td><%= c.user.health_notes %></td>
 		<td><%= c.created_at %></td>
-		<td><%= c.paid.to_s %></td>
+		<td>
+			<%= form_for c, url: class_lists_path(c.id), html: { method: :post } do |f| %>
+				<%= f.check_box :paid %>
+				<%= f.submit 'Edit', class: 'btn btn-default btn-xs' %>
+			<% end %>
+		</td>
+		<td>
+			<div class="btn-group btn-group-xs" role="group">
+				<%= form_for c, url: class_lists_path(c.id), html: { method: :delete } do |f| %>
+					<%= f.submit 'Delete', class: 'btn btn-danger btn-xs' %>
+				<% end %>
+			</div>
+		</td>
 	</tr>
 	<% @count += 1 %>
 <% end %>
