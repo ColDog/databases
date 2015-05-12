@@ -1,2 +1,14 @@
-body {padding-top: 50px;}
+$main: #227790;
+
+body {padding-top: 30px;}
 .container-fluid {max-width: 1000px !important; margin: auto !important;}
+
+#home-head {background-image: url('/assets/Sea-water-sailboat-summer_1440x900.jpg'); background:  center no-repeat; height: 600px; padding: 0; margin: 0;
+  h1 {text-align: center; font-size: 8em; color: white;}
+  h3 {text-align: center; color: white;}
+  .btn {font-size: 2em;}
+}
+
+.btn { border-radius: 0 !important; background-color: rgba($main, 0.7) !important;
+  .btn-primary {background-color: $main !important;}
+}
