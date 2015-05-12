@@ -1,7 +1,7 @@
 class CreateCourses < ActiveRecord::Migration
   def change
     create_table :courses do |t|
-      t.string  :code,      index: true
+      t.string  :code,      index: true, unique: true
       t.string  :category
       t.string  :boat
       t.integer :size

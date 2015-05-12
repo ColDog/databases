@@ -17,13 +17,12 @@ class UsersController < ApplicationController
   # admin only
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
     @user_classes = User.find(params[:id]).class_lists
-    @class_signup = User.find(params[:id]).class_lists.create!
   end
 
   def edit

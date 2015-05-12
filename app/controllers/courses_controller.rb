@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @class_list = Course.find(params[:id]).class_lists
+    @count = 1
   end
 
   def new
