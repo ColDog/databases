@@ -11,9 +11,10 @@ body {padding-top: 50px;}
   text-align: center;
 }
 
+.inline-form { display: inline-block !important; }
 
 .btn { border-radius: 0 !important; }
-.inline-form { width: 100px !important; display: inline-block !important; }
+.inline-group { width: 100px !important; display: inline-block !important; }
 label {margin-top: 1.5em;}
 .form-group { display: inline-block !important;
   input {margin-right: 2em !important; display: inline-block !important;}

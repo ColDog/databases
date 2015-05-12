@@ -1,4 +1,33 @@
 <h1>Course Index</h1>
+
+<div class="search-bar well">
+	<%= form_tag(courses_path, method: :get, class: 'inline-form') do %>
+		<label>Boat</label>
+		<%=select_tag :boat, options_for_select(%w"Pirate Escape Opti Advanced"), selected: params[:boat], include_blank: true, placeholder: 'Boat' %>
+
+		<label>Location</label>
+		<%=select_tag :location, options_for_select(%w"Jericho Kitsilano"), selected: params[:location], include_blank: true %>
+
+		<label>Skill Level</label>
+		<%=select_tag :category, options_for_select(%w"Beginner Intermediate Advanced"), selected: params[:category], include_blank: true %>
+
+		<label>Age</label>
+		<%=select_tag :age_group, options_for_select(%w"5-7 7-10 10-14 11-16 13-18 8-16 Adult"), selected: params[:age_group], include_blank: true %>
+
+		<label>Search</label>
+		<%= text_field_tag :search, params[:search], class: 'form-control inline-group', placeholder: 'code'  %>
+		<button class="btn btn-default btn-sm" type="submit">Search</button>
+
+	<% end %>
+
+	<%= link_to 'Clear Filters', courses_path, class: 'btn btn-sm btn-default inline-block' %>
+
+	<div>
+		<span>Search For:</span> <%= params[:boat] %> <%= params[:location] %> <%= params[:category] %> <%= params[:age_group] %> <%= params[:search] %>
+	</div>
+
+</div>
+
 <table class="table">
 	<thead>
 		<tr>

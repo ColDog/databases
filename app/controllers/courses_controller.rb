@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
 
 
   def index
-    @courses = Course.all
+    @courses = Course.filter(params.slice(:search, :location, :category, :boat, :age_group))
   end
 
   def show
@@ -66,6 +66,10 @@ class CoursesController < ApplicationController
                              :start_date,
                              :end_date
     )
+  end
+
+  def filter_params(params)
+    params.slice(:search, :location, :category, :boat, :age_group)
   end
 
 end

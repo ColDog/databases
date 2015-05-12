@@ -31,4 +31,23 @@ class Course < ActiveRecord::Base
 
   validates_with CourseCorrectTypesValidator
 
+  # scope searches and filters
+
+  include Filterable
+
+  scope :search,    -> (search)    { where('code like ?',"#{search}%") }
+  scope :location,  -> (location) { where location: location }
+  scope :category,  -> (category) { where category: category }
+  scope :boat,      -> (boat)     { where boat: boat }
+  scope :age_group, -> (age_group){ where age_group: age_group }
+
+  # controller methods
+  def self.adult
+    self.where('age_group = ?', 'Adult')
+  end
+
+  def self.youth
+    self.where('age_group != ?', 'Adult')
+  end
+
 end
