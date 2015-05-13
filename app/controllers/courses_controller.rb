@@ -49,7 +49,7 @@ class CoursesController < ApplicationController
     @course = Course.create(course_params)
     if @course.save
       flash[:success] = 'Course Created'
-      redirect_to :back
+      redirect_to courses_path
     else
       flash[:danger] = 'Course Create Failed'
       render 'courses/new'

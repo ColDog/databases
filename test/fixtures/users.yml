@@ -6,4 +6,14 @@ colin:
   health_notes: No Notes
   phone: 7787091959
   admin: true
-  activated: false
+  activated: true
+
+non_admin:
+  name: Jimbo
+  email: jimbo@test.ca
+  password_digest: <%= User.digest('password') %>
+  age: 25
+  health_notes: No Notes
+  phone: 7787091959
+  admin: false
+  activated: true
