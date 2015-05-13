@@ -32,14 +32,12 @@ class Course < ActiveRecord::Base
   validates_with CourseCorrectTypesValidator
 
   # scope searches and filters
-
-  include Filterable
-
   scope :search,    -> (search)    { where('code like ?',"#{search}%") }
   scope :location,  -> (location) { where location: location }
   scope :category,  -> (category) { where category: category }
   scope :boat,      -> (boat)     { where boat: boat }
   scope :age_group, -> (age_group){ where age_group: age_group }
+  scope :not_age,   -> (not_age)  { where('age_group != ?', "#{not_age}") }
 
   # controller methods
   def self.adult

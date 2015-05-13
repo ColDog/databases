@@ -1,11 +1,6 @@
 class ClassListsController < ApplicationController
   before_action :logged_in_user
-  before_action :logged_in_admin, only: [:destroy, :edit]
-
-  def new
-    @courses = Course.all.group_by(&:category)
-    @class_list = ClassList.new
-  end
+  before_action :logged_in_admin, only: [:destroy, :update]
 
   def create
     @class_list = ClassList.new(class_params)

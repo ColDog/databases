@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
-
   # static pages and information
   root        'main#home'
-  get         'adult'     => 'main#adult'
-  get         'youth'     => 'main#youth'
   get         'groups'    => 'main#groups'
   get         'rentals'   => 'main#rentals'
 
   # courses
   resources   :courses
+  get         'adult'     => 'courses#adult'
+  get         'youth'     => 'courses#youth'
+  get         'all'       => 'courses#all'
 
   # users
   resources   :users
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   delete      'logout'    => 'sessions#destroy'
 
   # class list
-  resources   :class_lists, only: [:new, :create, :destroy, :update]
+  resources   :class_lists, only: [:create, :destroy, :update]
 
 
 end

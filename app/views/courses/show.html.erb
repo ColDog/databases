@@ -26,14 +26,14 @@
 		<td><%= c.user.health_notes %></td>
 		<td><%= c.created_at %></td>
 		<td>
-			<%= form_for c, url: class_lists_path(c.id), html: { method: :post }, class: 'inline-form' do |f| %>
+			<%= form_for ClassList.find(c.id), url: class_list_path(c.id), method: :post, class: 'inline-form' do |f| %>
 				<%= f.check_box :paid %>
 				<%= f.submit 'Edit', class: 'btn btn-default btn-xs' %>
 			<% end %>
 		</td>
 		<td>
 			<div class="btn-group btn-group-xs" role="group">
-				<%= form_for c, url: class_lists_path(c.id), html: { method: :delete } do |f| %>
+				<%= form_for ClassList.find(c.id), url: class_list_path(c.id), method: :delete  do |f| %>
 					<%= f.submit 'Delete', class: 'btn btn-danger btn-xs' %>
 				<% end %>
 			</div>

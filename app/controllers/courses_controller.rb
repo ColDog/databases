@@ -1,10 +1,38 @@
 class CoursesController < ApplicationController
-  before_action :logged_in_user
-  before_action :logged_in_admin
+  before_action :logged_in_user,  except: [:adult, :youth, :all]
+  before_filter :logged_in_admin, except: [:adult, :youth, :all]
 
+  #PUBLIC
+  def adult
+    @courses = Course.adult.reverse_order
+    filter_params(params).each do |search, result|
+      @courses = @courses.public_send(search, result) if result.present?
+    end
+    @class_list = ClassList.new
+  end
 
+  def youth
+    @courses = Course.youth.reverse_order
+    filter_params(params).each do |search, result|
+      @courses = @courses.public_send(search, result) if result.present?
+    end
+    @class_list = ClassList.new
+  end
+
+  def all
+    @courses = Course.all.reverse_order
+    filter_params(params).each do |search, result|
+      @courses = @courses.public_send(search, result) if result.present?
+    end
+    @class_list = ClassList.new
+  end
+
+  #ADMIN ONLY
   def index
-    @courses = Course.filter(params.slice(:search, :location, :category, :boat, :age_group))
+    @courses = Course.all.reverse_order
+    filter_params(params).each do |search, result|
+      @courses = @courses.public_send(search, result) if result.present?
+    end
   end
 
   def show
@@ -69,7 +97,7 @@ class CoursesController < ApplicationController
   end
 
   def filter_params(params)
-    params.slice(:search, :location, :category, :boat, :age_group)
+    params.slice(:search, :location, :category, :boat, :age_group, :not_age)
   end
 
 end
