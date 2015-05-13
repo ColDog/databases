@@ -1,0 +1,8 @@
+<h2>Welcome to Macsailing <%= @user.name %>,</h2>
+
+<p>
+	Check out our amazing courses at <%= link_to 'MacSailing.com', '#' %>.
+	Click on the link below to activate your account:
+</p>
+
+<%= link_to 'Activate', edit_account_activation_url(@user.activation_token, email: @user.email) %>

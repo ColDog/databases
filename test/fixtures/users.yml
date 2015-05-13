@@ -1,8 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 colin:
   name: Colin Walker
   email: cjwalker@sfu.ca
+  password_digest: <%= User.digest('password') %>
   age: 25
   health_notes: No Notes
   phone: 7787091959
+  admin: true
+  activated: false

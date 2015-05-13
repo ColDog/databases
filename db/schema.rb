@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513051550) do
+ActiveRecord::Schema.define(version: 20150513063457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,14 @@ ActiveRecord::Schema.define(version: 20150513051550) do
     t.string   "phone"
     t.text     "health_notes"
     t.string   "password_digest"
-    t.boolean  "staff",           default: false
-    t.boolean  "admin",           default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "waiver",          default: false
+    t.boolean  "staff",             default: false
+    t.boolean  "admin",             default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "waiver",            default: false
     t.string   "remember_digest"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
   end
 
   add_foreign_key "class_lists", "courses"

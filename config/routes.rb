@@ -21,5 +21,8 @@ Rails.application.routes.draw do
   # class list
   resources   :class_lists
 
+  # password reset and account activation
+  resources :account_activations, only: [:edit]
+
 
 end
