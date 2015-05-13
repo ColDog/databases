@@ -42,3 +42,27 @@ User.create!({
                password_confirmation: 'password',
                admin: true
              })
+
+User.create!({
+               name: 'Jim Johnson',
+               email: 'jim@test.com',
+               phone: '7787091959',
+               password: 'password',
+               password_confirmation: 'password'
+             })
+
+User.create!({
+               name: 'Colin Walker',
+               email: 'colin@test.com',
+               phone: '6042243456',
+               password: 'password',
+               password_confirmation: 'password'
+             })
+
+User.create!({
+               name: 'Jimbo Walker',
+               email: 'Jimbo@test.com',
+               phone: '6045567890',
+               password: 'password',
+               password_confirmation: 'password'
+             })
