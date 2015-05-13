@@ -1,2 +1,40 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>Edit My Account</h1>
+<%= form_for @user do |f| %>
+	<%= render 'shared/error_messages' %>
+	<%= f.label :'Participant name (required)' %>
+	<%= f.text_field :name, class: 'form-control' %>
+
+	<%= f.label :'email (required)' %>
+	<%= f.email_field :email, class: 'form-control' %>
+
+	<%= f.label :'phone number (required)' %>
+	<%= f.text_field :phone, placeholder: '6042247245', class: 'form-control', maxlength: '10' %>
+
+	<%= f.label :age %>
+	<%= f.number_field :age, class: 'form-control' %>
+
+	<%= f.label :health_notes %>
+	<%= f.text_field :health_notes, class: 'form-control' %>
+
+	<%= f.label :password %>
+	<%= f.password_field :password, class: 'form-control' %>
+
+	<%= f.label :password_confirmation %>
+	<%= f.password_field :password_confirmation, class: 'form-control' %>
+
+	<h3>Waiver</h3>
+	<div class="waiver-text">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et bibendum erat. Etiam ipsum erat, molestie at tortor auctor, faucibus porta lectus. Ut eleifend diam et suscipit venenatis. Proin vestibulum risus ut commodo lobortis. Duis condimentum eros non justo finibus, vel dapibus risus congue. Maecenas vel gravida mi, vitae varius leo. Nunc dapibus in ipsum sit amet hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut accumsan, ex in imperdiet malesuada, nibh arcu venenatis felis, non consectetur eros magna ac purus. Fusce ex mi, scelerisque a convallis sit amet, tincidunt ut metus. Proin tellus velit, suscipit a bibendum ac, consectetur non lacus. Morbi pulvinar turpis feugiat ligula pharetra, sed ultrices ligula lobortis. Pellentesque quis vestibulum sapien. Praesent sagittis orci vulputate commodo venenatis.
+		Nunc in mauris dolor. Fusce ut sodales lorem. Aliquam pharetra tortor ornare scelerisque dictum. Proin sodales at orci eu ultrices. Quisque lacinia dui ex, vitae pharetra lorem dictum a. Maecenas sagittis congue hendrerit. Nam sit amet lectus gravida, lobortis neque in, dapibus lorem. Sed risus lorem, finibus vel viverra vitae, lobortis non ipsum. Ut aliquet lectus quis risus auctor, at efficitur tellus semper. In lobortis odio in purus blandit convallis. Etiam rhoncus semper elit, at consequat massa facilisis et. Aliquam erat volutpat.
+		Maecenas eu viverra nibh, nec euismod nulla. Maecenas convallis lectus vitae risus auctor vehicula. Nam euismod eu ipsum vel sagittis. Nulla euismod odio arcu, eu cursus metus sollicitudin vel. Morbi sit amet elementum nibh. Morbi libero dui, ullamcorper a diam et, consectetur hendrerit leo. In vitae magna id arcu commodo varius.
+		Nulla vitae turpis euismod, gravida mauris ut, elementum odio. Curabitur faucibus vestibulum ex vitae venenatis. Etiam id ex eleifend, faucibus velit sed, accumsan tellus. Cras quis accumsan velit, sed gravida arcu. Sed turpis nisl, pharetra at varius sed, tempor eu nulla. Vivamus eu consectetur tellus. Sed non nunc non sem mollis gravida in eget elit.
+		Nunc pulvinar ante enim, faucibus pellentesque justo sagittis ut. Aenean posuere sed lacus rhoncus laoreet. Phasellus consectetur turpis nec nisl consectetur condimentum. In quis feugiat nisl. Suspendisse vel elementum ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget quam vel leo tincidunt accumsan. Phasellus at tellus sapien. Nam scelerisque enim sit amet libero ullamcorper venenatis non id urna. Maecenas turpis ligula, sodales in aliquam at, fringilla at augue.
+	</div>
+
+	<%= f.check_box :waiver %>
+	<%= f.label :'I Understand' %>
+
+	<hr>
+
+	<%= f.submit 'Update my account', class: 'btn btn-primary' %>
+<% end %>

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   delete      'logout'    => 'sessions#destroy'
 
   # class list
-  resources   :class_lists, only: [:create, :destroy, :update]
+  resources   :class_lists
 
 
 end

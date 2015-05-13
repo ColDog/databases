@@ -1,0 +1,14 @@
+<h1>Application for <%= @class_list.course.title %></h1>
+<h3>For: <%= current_user.name %></h3>
+
+<hr>
+<h4>Application Status</h4>
+<h4>Paid: <%=raw @class_list.paid ? 'Yes' : 'NO ' + link_to('Pay Now', '#', class: 'btn-primary btn') %></h4>
+<h4>Course Start Date: <%= @class_list.course.start_date %></h4>
+<h4>Course Location: <%= @class_list.course.location %></h4>
+<% if @class_list.user.waiver %>
+	<h4>Waiver: Signed</h4>
+<% else %>
+	<h4>Waiver: Not Signed</h4>
+	<%= link_to 'Sign Waiver', edit_user_path(current_user), class: 'btn btn-primary' %>
+<% end %>

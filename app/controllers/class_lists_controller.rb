@@ -6,10 +6,19 @@ class ClassListsController < ApplicationController
     @class_list = ClassList.new(class_params)
     if @class_list.save
       flash[:success] = 'Successfully signed up for class'
-      redirect_to user_path(current_user.id)
+      redirect_to class_list_path(@class_list)
     else
       flash[:danger] = 'Class is full or you have already signed up'
-      redirect_to new_class_list_path
+      redirect_to all_path
+    end
+  end
+
+  def show
+    class_list = ClassList.find(params[:id])
+    if current_user.id == class_list.user_id || current_user.admin
+      @class_list = class_list
+    else
+      redirect_to all_path
     end
   end
 

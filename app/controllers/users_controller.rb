@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :edit, :update]
-  before_action :logged_in_admin, only: [:index, :edit, :update]
+  # before_action :logged_in_admin, only: [:index, :edit, :update]
 
   def new
     @user = User.new
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = 'Thanks for registering, complete the process here'
-      redirect_to root_path
+      redirect_to all_path
     else
       render 'new'
     end
@@ -41,9 +41,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.save
+      flash[:success] = 'Account updated'
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   private
@@ -54,7 +62,8 @@ class UsersController < ApplicationController
                                    :phone,
                                    :health_notes,
                                    :password,
-                                   :password_confirmation
+                                   :password_confirmation,
+                                   :waiver
       )
     end
 
