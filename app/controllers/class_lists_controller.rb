@@ -22,9 +22,13 @@ class ClassListsController < ApplicationController
     end
   end
 
+  def edit
+    @class_list = ClassList.find(params[:id])
+  end
+
   def update
     @class_list = ClassList.find(params[:id])
-    if @class_list.update_attributes(course_params)
+    if @class_list.update_attributes(class_params)
       flash[:success] = 'Edited Class'
       redirect_to courses_path
     else

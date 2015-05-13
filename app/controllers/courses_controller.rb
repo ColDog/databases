@@ -49,7 +49,7 @@ class CoursesController < ApplicationController
     @course = Course.create(course_params)
     if @course.save
       flash[:success] = 'Course Created'
-      redirect_to courses_path
+      redirect_to :back
     else
       flash[:danger] = 'Course Create Failed'
       render 'courses/new'
@@ -64,7 +64,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     if @course.update_attributes(course_params)
       flash[:success] = 'Course Updated'
-      redirect_to courses_path
+      redirect_to :back
     else
       flash[:danger] = 'Course Update Failed'
       render 'courses/edit'
@@ -74,7 +74,7 @@ class CoursesController < ApplicationController
   def destroy
     @course = Course.find(params[:id]).destroy
     flash[:danger] = 'Course Deleted'
-    redirect_to courses_path
+    redirect_to :back
   end
 
   private

@@ -25,7 +25,7 @@ class ClassList < ActiveRecord::Base
 
   validates_with ClassSizeValidator
 
-  validates_with UniqueClassUserValidator
+  validates_with UniqueClassUserValidator, on: [:create]
 
   validates :user_id, presence: true
 

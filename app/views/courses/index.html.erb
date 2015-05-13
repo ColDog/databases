@@ -54,7 +54,11 @@
 			<td><%= course.size %></td>
 			<td><%= course.class_lists.count %></td>
 			<td><%= course.dates %></td>
-			<td><%= link_to 'Class List', course_path(course.id) %> | <%= link_to 'Delete', course, method: :delete %> | <%= link_to 'Edit', edit_course_path(course.id) %>  </td>
+			<td>
+				<%= link_to 'Class List', course_path(course.id), class: 'btn btn-xs btn-default' %>
+				<%= link_to 'Delete', course, method: :delete, class: 'btn btn-xs btn-default' %>
+				<%= link_to 'Edit', edit_course_path(course.id), class: 'btn btn-xs btn-default' %>
+			</td>
 		</tr>
 	<% end %>
 </table>

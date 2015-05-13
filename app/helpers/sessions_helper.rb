@@ -37,4 +37,15 @@ module SessionsHelper
     end
   end
 
+  # checks if current user is the user argument
+  def current_user?(user)
+    user == current_user
+  end
+
+  # checks if user is correct
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user) || current_user.admin
+  end
+
 end

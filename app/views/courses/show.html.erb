@@ -13,7 +13,8 @@
 			<th>Health Notes</th>
 			<th>Created At</th>
 			<th>Paid</th>
-			<th>Actions</th>
+			<th>Waiver</th>
+			<th>Delete</th>
 		</tr>
 	</thead>
 <% @class_list.each do |c| %>
@@ -24,19 +25,19 @@
 		<td><%= c.user.email %></td>
 		<td><%= c.user.age %></td>
 		<td><%= c.user.health_notes %></td>
-		<td><%= c.created_at %></td>
+		<td><%= c[:created_at].strftime("%B %d") %></td>
 		<td>
-			<%= form_for ClassList.find(c.id), url: class_list_path(c.id), method: :post, class: 'inline-form' do |f| %>
-				<%= f.check_box :paid %>
-				<%= f.submit 'Edit', class: 'btn btn-default btn-xs' %>
+			<%= form_for c, method: :put, url: class_list_path(c) do |f|  %>
+				<%= f.check_box :paid %> <%= f.submit 'Update', class: 'btn btn-xs btn-default' %>
 			<% end %>
 		</td>
 		<td>
-			<div class="btn-group btn-group-xs" role="group">
-				<%= form_for ClassList.find(c.id), url: class_list_path(c.id), method: :delete  do |f| %>
-					<%= f.submit 'Delete', class: 'btn btn-danger btn-xs' %>
-				<% end %>
-			</div>
+			<%= form_for c.user, method: :put, url: user_path(c.user) do |f|  %>
+				<%= f.check_box :waiver %> <%= f.submit 'Update', class: 'btn btn-xs btn-default' %>
+			<% end %>
+		</td>
+		<td>
+			<%= link_to 'Delete', c, method: :delete, class: 'btn btn-xs btn-default' %>
 		</td>
 	</tr>
 	<% @count += 1 %>

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :show, :edit, :update]
-  # before_action :logged_in_admin, only: [:index, :edit, :update]
+  before_action :logged_in_user,  only: [:index, :show, :edit, :update]
+  before_action :logged_in_admin, only: [:index]
+  before_action :correct_user,    only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # admin only
   def index
     query = params[:search]
     if query.blank?
@@ -46,9 +46,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.save
+    if @user.update_attributes(user_params)
       flash[:success] = 'Account updated'
-      redirect_to @user
+      redirect_to :back
     else
       render 'edit'
     end
