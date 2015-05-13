@@ -1,11 +1,32 @@
 <h1>Application for <%= @class_list.course.title %></h1>
-<h3>For: <%= current_user.name %></h3>
+<h6>For: <%= current_user.name %></h6>
+<% if @class_list.paid && @class_list.user.waiver %>
+	<h3>Application Status: FINISHED </h3>
+<% else %>
+	<h3>Application Status: SPOT RESERVED</h3>
+	<p>Please Complete payment and sign waiver to finish your application.</p>
+<% end %>
 
+<br>
+<br>
+
+<% if @class_list.paid %>
+	<h4>Paid: YES</h4>
+	<p>Amount Paid: <%= @class_list.course.price %></p>
+	<p>Paypal Invoice Number: </p>
+<% else %>
+	<h4>Paid: NO</h4>
+	<%= link_to 'Pay Now', '#', class: 'btn btn-primary btn-xs' %> Through PayPal
+	<p>Or Pay by calling us at 604.224.7245</p>
+	<p>Warning about not paying...</p>
+<% end %>
 <hr>
-<h4>Application Status: Spot Reserved</h4>
-<h4>Paid: <%=raw @class_list.paid ? 'Yes' : 'NO ' + link_to('Pay Now', '#', class: 'btn-primary btn btn-xs') %></h4>
+
 <h4>Course Start Date: <%= @class_list.course.start_date %></h4>
+<hr>
 <h4>Course Location: <%= @class_list.course.location %></h4>
+<hr>
+
 <% if @class_list.user.waiver %>
 	<h4>Waiver: Signed</h4>
 <% else %>

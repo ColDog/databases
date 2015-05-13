@@ -38,6 +38,7 @@ class Course < ActiveRecord::Base
   scope :boat,      -> (boat)     { where boat: boat }
   scope :age_group, -> (age_group){ where age_group: age_group }
   scope :not_age,   -> (not_age)  { where('age_group != ?', "#{not_age}") }
+  scope :start_date,-> (search)   { where start_date: search }
 
   # controller methods
   def self.adult

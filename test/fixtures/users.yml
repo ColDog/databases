@@ -1,4 +1,5 @@
 colin:
+  id: 2
   name: Colin Walker
   email: cjwalker@sfu.ca
   password_digest: <%= User.digest('password') %>
@@ -9,6 +10,7 @@ colin:
   activated: true
 
 non_admin:
+  id: 1
   name: Jimbo
   email: jimbo@test.ca
   password_digest: <%= User.digest('password') %>

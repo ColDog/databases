@@ -49,5 +49,4 @@ class CourseNewTest < ActionDispatch::IntegrationTest
     end
   end
 
-
 end
