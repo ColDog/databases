@@ -26,7 +26,7 @@ class Course < ActiveRecord::Base
   validates :code, presence: true, length: { is: 4 }, uniqueness: true
   validates :size, presence: true, numericality: true
   validates :year, presence: true, numericality: true
-  validates :price, presence: true, numericality: true
+  validates :price, presence: true, numericality: true, length: { maximum: 4 }
   validates :age_group, presence: true
 
   validates_with CourseCorrectTypesValidator

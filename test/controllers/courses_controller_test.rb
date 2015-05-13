@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class CoursesControllerTest < ActionController::TestCase
-  test "should get resources" do
-    get :resources
-    assert_response :success
+
+  test 'should not be able to register when not logged in' do
+
   end
 
 end

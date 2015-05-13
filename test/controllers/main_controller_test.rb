@@ -6,16 +6,6 @@ class MainControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get adult" do
-    get :adult
-    assert_response :success
-  end
-
-  test "should get youth" do
-    get :youth
-    assert_response :success
-  end
-
   test "should get groups" do
     get :groups
     assert_response :success

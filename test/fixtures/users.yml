@@ -1,13 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  email: MyString
-  age: 1
-  health_notes: MyText
-
-two:
-  name: MyString
-  email: MyString
-  age: 1
-  health_notes: MyText
+colin:
+  name: Colin Walker
+  email: cjwalker@sfu.ca
+  age: 25
+  health_notes: No Notes
+  phone: 7787091959
