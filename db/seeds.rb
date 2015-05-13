@@ -90,15 +90,12 @@ User.create!({id:14,name:'John',email:'j@test.com',phone:'6045567890',password:'
 User.create!({id:15,name:'John',email:'k@test.com',phone:'6045567890',password:'password',password_confirmation:'password',activated:false,waiver:false,admin:false})
 User.create!({id:16,name:'John',email:'l@test.com',phone:'6045567890',password:'password',password_confirmation:'password',activated:false,waiver:false,admin:false})
 
-ClassList.create!({course_id: 1, user_id: 2, paid: false})
 ClassList.create!({course_id: 2, user_id: 2, paid: true})
 ClassList.create!({course_id: 3, user_id: 2, paid: true})
 ClassList.create!({course_id: 4, user_id: 2, paid: false})
 ClassList.create!({course_id: 5, user_id: 2, paid: false})
-ClassList.create!({course_id: 1, user_id: 6, paid: true})
 ClassList.create!({course_id: 2, user_id: 6, paid: false})
 ClassList.create!({course_id: 10, user_id: 6, paid: false})
-ClassList.create!({course_id: 1, user_id: 4, paid: true})
 ClassList.create!({course_id: 2, user_id: 5, paid: true})
 ClassList.create!({course_id: 3, user_id: 6, paid: false})
 ClassList.create!({course_id: 4, user_id: 7, paid: false})
@@ -106,6 +103,25 @@ ClassList.create!({course_id: 6, user_id: 4, paid: true})
 ClassList.create!({course_id: 7, user_id: 5, paid: false})
 ClassList.create!({course_id: 8, user_id: 6, paid: false})
 ClassList.create!({course_id: 9, user_id: 7, paid: true})
+
+ClassList.create!({course_id: 1, user_id: 1, paid: false})
+ClassList.create!({course_id: 1, user_id: 2, paid: false})
+ClassList.create!({course_id: 1, user_id: 3, paid: false})
+ClassList.create!({course_id: 1, user_id: 4, paid: false})
+ClassList.create!({course_id: 1, user_id: 5, paid: false})
+ClassList.create!({course_id: 1, user_id: 6, paid: false})
+ClassList.create!({course_id: 1, user_id: 7, paid: false})
+ClassList.create!({course_id: 1, user_id: 8, paid: false})
+ClassList.create!({course_id: 1, user_id: 9, paid: false})
+ClassList.create!({course_id: 1, user_id: 10, paid: false})
+ClassList.create!({course_id: 1, user_id: 11, paid: false})
+ClassList.create!({course_id: 1, user_id: 12, paid: false})
+ClassList.create!({course_id: 1, user_id: 13, paid: false})
+ClassList.create!({course_id: 1, user_id: 14, paid: false})
+ClassList.create!({course_id: 1, user_id: 15, paid: false})
+ClassList.create!({course_id: 1, user_id: 16, paid: false})
+
+
 
 
 

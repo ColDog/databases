@@ -3,22 +3,6 @@ class CoursesController < ApplicationController
   before_filter :logged_in_admin, except: [:adult, :youth, :all]
 
   #PUBLIC
-  def adult
-    @courses = Course.adult.reverse_order
-    filter_params(params).each do |search, result|
-      @courses = @courses.public_send(search, result) if result.present?
-    end
-    @class_list = ClassList.new
-  end
-
-  def youth
-    @courses = Course.youth.reverse_order
-    filter_params(params).each do |search, result|
-      @courses = @courses.public_send(search, result) if result.present?
-    end
-    @class_list = ClassList.new
-  end
-
   def all
     @courses = Course.all.reverse_order
     filter_params(params).each do |search, result|

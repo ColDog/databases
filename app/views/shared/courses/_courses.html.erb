@@ -1,5 +1,5 @@
 <table class="table">
-	<thead><tr><th>Title</th>  <th>Code</th> <th>Skill</th> <th>Age Group</th>  <th>Description</th>  <th>Start Date</th>  <th>Sign Up</th></tr></thead>
+	<thead><tr><th>Title</th>  <th>Code</th> <th>Skill</th> <th>Age Group</th>  <th>Description</th> <th>Max Size</th> <th>Current Size</th>  <th>Start Date</th>  <th>Sign Up</th></tr></thead>
 	<% @courses.each do |course| %>
 		<tr>
 			<td><strong><%= course.title %></strong></td>
@@ -7,22 +7,26 @@
 			<td><%= course.category %></td>
 			<td><%= course.age_group %></td>
 			<td><%= course.about %></td>
+			<td><%= course.size %></td>
+			<td><%= course.class_lists.count %></td>
 			<td><%= course.start_date %></td>
 
 			<!--Sign Up Cell-->
+			<td>
 			<% if logged_in? %>
 				<%= form_for @class_list, url: class_lists_path(@class_list), html: { method: :post } do |f| %>
 					<%= f.hidden_field :course_id, value: course.id %>
 					<%= f.hidden_field :user_id, value: current_user.id %>
 					<% if course.class_lists.count >= course.size %>
-						<td><strong>Class Full!</strong></td>
+						<strong>Class Full!</strong>
 					<% else %>
-						<td><%= f.submit 'Sign Up', class: 'btn btn-primary btn-xs' %></td>
+						<%= f.submit 'Sign Up', class: 'btn btn-primary btn-xs' %>
 					<% end %>
 				<% end %>
 			<% else %>
-				<td><%= link_to 'Register', login_path, class: 'btn btn-primary btn-xs' %></td>
+				<%= link_to 'Register', login_path, class: 'btn btn-primary btn-xs' %>
 			<% end %>
+			</td>
 
 		</tr>
 	<% end %>
