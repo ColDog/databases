@@ -2,10 +2,12 @@ class User < ActiveRecord::Base
 
   include Authentication
 
+  include PasswordReset
+
   has_many :class_lists
 
   has_secure_password
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
 
   ## CREATING AND CLEANING DATA ##

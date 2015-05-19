@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513063457) do
+ActiveRecord::Schema.define(version: 20150519061702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20150513063457) do
     t.string   "remember_digest"
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
   add_foreign_key "class_lists", "courses"
