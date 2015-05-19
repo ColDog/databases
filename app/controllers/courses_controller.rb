@@ -19,7 +19,6 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @users
     @course = Course.find(params[:id])
     @new_class_list = ClassList.new
     @new_wait_list = WaitList.new
@@ -81,7 +80,7 @@ class CoursesController < ApplicationController
   end
 
   def filter_params(params)
-    params.slice(:search, :location, :category, :boat, :age_group, :not_age)
+    params.slice(:search, :location, :category, :boat, :age_group, :not_age, :start_date, :end_date)
   end
 
 end
