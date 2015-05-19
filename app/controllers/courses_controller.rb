@@ -8,7 +8,6 @@ class CoursesController < ApplicationController
     filter_params(params).each do |search, result|
       @courses = @courses.public_send(search, result) if result.present?
     end
-    @class_list = ClassList.new
   end
 
   #ADMIN ONLY
@@ -22,7 +21,6 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @class_list = Course.find(params[:id]).class_lists
-    @count = 1
   end
 
   def new
