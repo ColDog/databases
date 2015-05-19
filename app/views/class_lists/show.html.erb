@@ -1,11 +1,6 @@
 <h1>Application for <%= @class_list.course.title %></h1>
-<h6>For: <%= current_user.name %></h6>
-<% if @class_list.paid && @class_list.user.waiver %>
-	<h3>Application Status: FINISHED </h3>
-<% else %>
-	<h3>Application Status: SPOT RESERVED</h3>
-	<p>Please Complete payment and sign waiver to finish your application.</p>
-<% end %>
+<h4>For: <%= current_user.name %></h4>
+<h3><%= application_status(@class_list) %></h3>
 
 <br>
 <br>
@@ -32,3 +27,4 @@
 <% else %>
 	<h4>Waiver: Not Signed <%= link_to 'Sign Waiver', edit_user_path(current_user), class: 'btn btn-primary btn-sm' %></h4>
 <% end %>
+<hr>

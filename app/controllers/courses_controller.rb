@@ -48,7 +48,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     if @course.update_attributes(course_params)
       flash[:success] = 'Course Updated'
-      redirect_to :back
+      redirect_to courses_path
     else
       flash[:danger] = 'Course Update Failed'
       render 'courses/edit'
