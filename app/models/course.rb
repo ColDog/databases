@@ -12,22 +12,10 @@ class Course < ActiveRecord::Base
   validates :year,        presence: true, numericality: true
   validates :price,       presence: true, numericality: true, length: { maximum: 4 }
   validates :age_group,   presence: true
-  validates :start_date,  presence: true ; validate :start_not_in_past
-  validates :end_date,    presence: true ; validate :end_date_not_before_start
+  validates :start_date,  presence: true ; validate :start_date_is_date ; validate :start_not_in_past
+  validates :end_date,    presence: true ; validate :end_date_is_date   ; validate :end_date_not_before_start
 
-  def start_not_in_past
-    if start_date < Date.today
-      errors.add(:start_date, 'Start date cannot be in the past')
-    end
-  end
-
-  def end_date_not_before_start
-    if end_date < start_date
-      errors.add(:end_date, 'End date should be after the start date')
-    end
-  end
-
-  include References
+  include CorrectTypes
   validates_with CourseCorrectTypesValidator
 
   # scope searches and filters
@@ -47,6 +35,31 @@ class Course < ActiveRecord::Base
 
   def self.youth
     self.where('age_group != ?', 'Adult')
+  end
+
+  # validation methods
+  def start_date_is_date
+    unless start_date.class == Date
+      errors.add(:start_date, 'Start date is not of type date')
+    end
+  end
+
+  def end_date_is_date
+    unless end_date.class == Date
+      errors.add(:end_date, 'End date is not of type date')
+    end
+  end
+
+  def start_not_in_past
+    if start_date < Date.today
+      errors.add(:start_date, 'Start date cannot be in the past')
+    end
+  end
+
+  def end_date_not_before_start
+    if end_date < start_date
+      errors.add(:end_date, 'End date should be after the start date')
+    end
   end
 
 end

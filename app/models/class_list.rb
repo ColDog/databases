@@ -6,7 +6,7 @@ class ClassList < ActiveRecord::Base
   validates :course_id, presence: true
 
   include ClassSize
-  include References
+  include ReferentialIntegrity
   validates_with ClassSizeValidator
   validates_with UniqueClassUserValidator, on: [:create]
   validates_with CourseAndUserExist
