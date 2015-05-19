@@ -1,34 +1,39 @@
 <h1>Application for <%= @class_list.course.title %></h1>
 <h4>For: <%= @class_list.user.name %></h4>
-<h3><%= application_status(@class_list) %></h3>
 
-<br>
-<br>
-
-<% if @class_list.paid %>
-	<h4>Paid: YES</h4>
-	<p>Amount Paid: <%= @class_list.course.price %></p>
-	<p>Paypal Invoice Number: </p>
+<% if @is_wait_list %>
+	<h3>You are currently on the wait list for this course.</h3>
 <% else %>
-	<h4>Paid: NO</h4>
-	<%= link_to 'Pay Now', '#', class: 'btn btn-primary btn-xs' %> Through PayPal
-	<p>Or Pay by calling us at 604.224.7245</p>
-	<p>Warning about not paying...</p>
+	<h3><%= application_status(@class_list) %></h3>
+
+	<br>
+	<br>
+
+	<% if @class_list.paid %>
+		<h4>Paid: YES</h4>
+		<p>Amount Paid: <%= @class_list.course.price %></p>
+		<p>Paypal Invoice Number: </p>
+	<% else %>
+		<h4>Paid: NO</h4>
+		<%= link_to 'Pay Now', '#', class: 'btn btn-primary btn-xs' %> Through PayPal
+		<p>Or Pay by calling us at 604.224.7245</p>
+		<p>Warning about not paying...</p>
+	<% end %>
+	<hr>
+
+	<h4>Course Start Date: <%= @class_list.course.start_date %></h4>
+	<hr>
+	<h4>Course Location: <%= @class_list.course.location %></h4>
+	<hr>
+
+	<% if @class_list.user.waiver %>
+		<h4>Waiver: Signed</h4>
+	<% else %>
+		<h4>Waiver: Not Signed <%= link_to 'Sign Waiver', edit_user_path(@class_list.user), class: 'btn btn-primary btn-sm' %></h4>
+	<% end %>
+	<hr>
+
+	<%= link_to 'Delete Application', class_list_path(@class_list), method: :delete, class: 'btn btn-danger' %>
+
+	<hr>
 <% end %>
-<hr>
-
-<h4>Course Start Date: <%= @class_list.course.start_date %></h4>
-<hr>
-<h4>Course Location: <%= @class_list.course.location %></h4>
-<hr>
-
-<% if @class_list.user.waiver %>
-	<h4>Waiver: Signed</h4>
-<% else %>
-	<h4>Waiver: Not Signed <%= link_to 'Sign Waiver', edit_user_path(@class_list.user), class: 'btn btn-primary btn-sm' %></h4>
-<% end %>
-<hr>
-
-<%= link_to 'Delete Application', class_list_path(@class_list), method: :delete, class: 'btn btn-danger' %>
-
-<hr>

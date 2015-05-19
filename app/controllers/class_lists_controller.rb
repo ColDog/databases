@@ -1,30 +1,42 @@
 class ClassListsController < ApplicationController
   before_action :logged_in_user
+  # before_action :correct_user TODO fix this correct user
   before_action :logged_in_activated
-  before_action :logged_in_admin, only: [:update]
+  before_action :logged_in_admin,     only: [:update]
 
   def create
-    @class_list = current_user.class_lists.build(class_params)
+    if current_user.admin
+      @class_list = ClassList.create(class_params)
+    else
+      @class_list = current_user.class_lists.build(class_params)
+    end
     if @class_list.save
       flash[:success] = 'Successfully signed up for class'
-      redirect_to class_list_path(@class_list)
+      if current_user.admin
+        redirect_to course_path(@class_list.course_id)
+      else
+        redirect_to class_list_path(@class_list)
+      end
     else
       flash[:danger] = 'Class is full or you have already signed up'
-      redirect_to all_path
+      if current_user.admin
+        redirect_to course_path(@class_list.course_id)
+      else
+        redirect_to all_path
+      end
     end
   end
 
   def show
     class_list = ClassList.find(params[:id])
-    if current_user.id == class_list.user_id || current_user.admin
+    wait_list = WaitList.find(params[:id])
+    if !class_list.nil?
       @class_list = class_list
-    else
-      redirect_to all_path
+      @is_wait_list = false
+    elsif !wait_list.nil?
+      @class_list = wait_list
+      @is_wait_list = true
     end
-  end
-
-  def edit
-    @class_list = ClassList.find(params[:id])
   end
 
   def update

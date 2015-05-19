@@ -20,19 +20,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    query = params[:search]
-    if query.blank?
-      @users = User.all
-    else
-      query = params[:search].downcase
-      search = User.where('lower(name) like ? OR lower(email) like ?', "%#{query}%", "%#{query}%")
-      if search.empty?
-        @users = User.all
-        flash.now[:danger] = 'No Result Found for search'
-      else
-        @users = search
-        flash.now[:success] = "Search results for #{query}"
-      end
+    @users = User.all
+    filter_params(params).each do |search, result|
+      @users = @users.public_send(search, result) if result.present?
     end
   end
 
@@ -72,6 +62,10 @@ class UsersController < ApplicationController
                                    :password_confirmation,
                                    :waiver
       )
+    end
+
+    def filter_params(params)
+      params.slice(:search, :phone)
     end
 
 end

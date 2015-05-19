@@ -17,6 +17,7 @@ end
 
 class Course < ActiveRecord::Base
   has_many :class_lists, dependent: :destroy
+  has_many :wait_lists,  dependent: :destroy
 
   validates :title,     presence: true, length: { maximum: 244 }
   validates :category,  presence: true

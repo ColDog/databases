@@ -16,6 +16,11 @@
 
 				<% if course.class_lists.count >= course.size %>
 					<strong>Class Full!</strong>
+					<% if logged_in? %>
+						<% if current_user.activated %>
+							<%= link_to 'Register for Wait List', wait_lists_path(wait_list: {course_id: course.id}), method: :post, class: 'btn btn-default btn-xs' %>
+						<% end %>
+					<% end %>
 				<% else %>
 
 					<% if logged_in? %>

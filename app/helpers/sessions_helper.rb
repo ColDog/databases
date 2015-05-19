@@ -25,6 +25,11 @@ module SessionsHelper
     end
   end
 
+  # checks if current user is the user argument
+  def current_user?(user)
+    user == current_user
+  end
+
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
     !current_user.nil?
@@ -66,11 +71,6 @@ module SessionsHelper
       flash[:danger] = 'Please Activate Your Account'
       redirect_to user_path(current_user)
     end
-  end
-
-  # checks if current user is the user argument
-  def current_user?(user)
-    user == current_user
   end
 
   # checks if user is correct

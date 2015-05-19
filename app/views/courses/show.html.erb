@@ -2,6 +2,27 @@
 <h5><%= @course.dates %></h5>
 <h5><%= @course.category %> <%= @course.code %> Max Size: <%= @course.size %></h5>
 <hr>
+<div class="row">
+	<div class="col-md-6 col-sm-6">
+		<h4>Add user to class list:</h4>
+		<%= form_for @new_class_list, url: class_lists_path, method: :post do |f| %>
+			<%= f.number_field :user_id, class: 'form-control inline-group', placeholder: 'user id' %>
+			<%= f.hidden_field :course_id, value: @course.id %>
+			<%= f.submit 'Add User', class: 'btn btn-default' %>
+		<% end %>
+	</div>
+	<div class="col-md-6 col-sm-6">
+		<h4>Add user to wait list:</h4>
+		<%= form_for @new_wait_list, url: wait_lists_path, method: :post do |f| %>
+			<%= f.number_field :user_id, class: 'form-control inline-group', placeholder: 'user id' %>
+			<%= f.hidden_field :course_id, value: @course.id %>
+			<%= f.submit 'Add User', class: 'btn btn-default' %>
+		<% end %>
+	</div>
+</div>
+
+<hr>
+<h4>Class List</h4>
 <table class="table">
 	<thead>
 		<tr>
@@ -17,7 +38,7 @@
 			<th>Delete</th>
 		</tr>
 	</thead>
-<% @class_list.each do |c| %>
+<% @course.class_lists.each do |c| %>
 	<tr>
 		<td><%= c.id.to_s %></td>
 		<td><%= c.user.name %></td>
@@ -42,3 +63,41 @@
 	</tr>
 <% end %>
 </table>
+
+<hr>
+<h4>Wait List</h4>
+<table class="table">
+	<thead>
+	<tr>
+		<th>#</th>
+		<th>Name</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Age</th>
+		<th>Health Notes</th>
+		<th>Created At</th>
+		<th>Waiver</th>
+		<th>Delete</th>
+	</tr>
+	</thead>
+	<% @course.wait_lists.each do |c| %>
+		<tr>
+			<td><%= c.id.to_s %></td>
+			<td><%= c.user.name %></td>
+			<td><%= c.user.phone %></td>
+			<td><%= c.user.email %></td>
+			<td><%= c.user.age %></td>
+			<td><%= c.user.health_notes %></td>
+			<td><%= c[:created_at].strftime("%B %d") %></td>
+			<td>
+				<%= form_for c.user, method: :put, url: user_path(c.user) do |f|  %>
+					<%= f.check_box :waiver %> <%= f.submit 'Update', class: 'btn btn-xs btn-default' %>
+				<% end %>
+			</td>
+			<td>
+				<%= link_to 'Delete', c, method: :delete, class: 'btn btn-xs btn-default' %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+<hr>

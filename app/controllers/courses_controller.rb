@@ -19,8 +19,10 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @users
     @course = Course.find(params[:id])
-    @class_list = Course.find(params[:id]).class_lists
+    @new_class_list = ClassList.new
+    @new_wait_list = WaitList.new
   end
 
   def new

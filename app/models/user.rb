@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   include PasswordReset
 
   has_many :class_lists, dependent: :destroy
+  has_many :wait_lists,  dependent: :destroy
 
   has_secure_password
   attr_accessor :remember_token, :activation_token, :reset_token
