@@ -1,8 +1,5 @@
 class User < ActiveRecord::Base
-
   include Authentication
-
-  include PasswordReset
 
   has_many :class_lists, dependent: :destroy
   has_many :wait_lists,  dependent: :destroy
