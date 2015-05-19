@@ -17,18 +17,23 @@
 				<% if course.class_lists.count >= course.size %>
 					<strong>Class Full!</strong>
 				<% else %>
+
 					<% if logged_in? %>
+
 						<% if current_user.activated %>
-							<%= form_for @class_list, url: class_lists_path(@class_list), html: { method: :post } do |f| %>
+							<%= form_for(:class_list, url: class_lists_path, method: :post) do |f| %>
 								<%= f.hidden_field :course_id, value: course.id %>
 								<%= f.hidden_field :user_id, value: current_user.id %>
+								<%= f.submit 'Sign Up', class: 'btn btn-xs btn-primary' %>
 							<% end %>
 						<% else %>
 							<%= link_to 'Activate Account', user_path(current_user), class: 'btn btn-primary btn-xs'  %>
 						<% end %>
+
 					<% else %>
 						<%= link_to 'Register', login_path, class: 'btn btn-primary btn-xs' %>
 					<% end %>
+
 				<% end %>
 
 			</td>
