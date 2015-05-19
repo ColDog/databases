@@ -2,16 +2,19 @@
 <p><%= @user.email %></p>
 <%= link_to 'Edit Account', edit_user_path(@user), class: 'btn btn-default' %>
 <%= link_to 'Sign Up For Courses', all_path, class: 'btn btn-default' %>
-<hr>
+
 <% unless @user.activated %>
+	<hr>
 	<p>Your Account is currently not activated. You will not be able to register for courses. Check your email for the activation link.</p>
 	<%= link_to 'Resend Activation Link', '#' %>
 	<!--TODO resend activation link -->
+	<hr>
 <% end %>
-<hr>
 <% unless @user.waiver %>
+	<hr>
 	<p>You have not signed the current waiver. Please sign the waiver by clicking below.</p>
 	<%= link_to 'Sign Waiver', edit_user_path(@user) %>
+	<hr>
 <% end %>
 
 <h2>My Classes</h2>
@@ -34,7 +37,7 @@
 			<td><%= c.course.location %></td>
 			<td><%= c.course.dates %></td>
 			<td><%= c.paid %></td>
-			<td><%= link_to 'My Application', class_list_path(c) %></td>
+			<td><%= link_to 'My Application', class_list_path(c), class: 'btn btn-xs btn-default' %></td>
 		</tr>
 	<% end %>
 </table>

@@ -1,10 +1,10 @@
 class ClassListsController < ApplicationController
   before_action :logged_in_user
   before_action :logged_in_activated
-  before_action :logged_in_admin, only: [:destroy, :update]
+  before_action :logged_in_admin, only: [:update]
 
   def create
-    @class_list = ClassList.create({user_id: current_user.id, course_id: params[:id]}) ## TODO is this secure?
+    @class_list = current_user.class_lists.build(class_params)
     if @class_list.save
       flash[:success] = 'Successfully signed up for class'
       redirect_to class_list_path(@class_list)
@@ -40,8 +40,12 @@ class ClassListsController < ApplicationController
 
   def destroy
     @class_list = ClassList.find(params[:id]).destroy
-    flash[:danger] = 'Course Deleted'
-    redirect_to courses_path
+    flash[:danger] = 'Application deleted'
+    if current_user.admin
+      redirect_to courses_path
+    else
+      redirect_to all_path
+    end
   end
 
   private

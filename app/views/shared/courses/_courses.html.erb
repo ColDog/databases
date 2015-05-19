@@ -21,7 +21,7 @@
 					<% if logged_in? %>
 
 						<% if current_user.activated %>
-							<%= link_to 'Register Link', class_lists_path(id: course.id), method: :post, class: 'btn btn-xs btn-primary' %>
+							<%= link_to 'Register Link', class_lists_path(class_list: {course_id: course.id}), method: :post, class: 'btn btn-xs btn-primary' %>
 						<% else %>
 							<%= link_to 'Activate Account', user_path(current_user), class: 'btn btn-primary btn-xs'  %>
 						<% end %>
