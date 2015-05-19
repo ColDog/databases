@@ -32,10 +32,6 @@ module Authentication
     update_attribute(:remember_digest, nil)
   end
 
-end
-
-module PasswordReset
-
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = User.new_token
@@ -51,6 +47,5 @@ module PasswordReset
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
-
 
 end
