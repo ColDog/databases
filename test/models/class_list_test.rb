@@ -3,7 +3,7 @@ require 'test_helper'
 class ClassListTest < ActiveSupport::TestCase
   def setup
     @user = users(:colin)
-    @course = courses(:one)
+    @course = courses(:cansail)
     @class = ClassList.new(course_id: @course.id, user_id: @user.id)
   end
 

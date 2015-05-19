@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 cansail:
+  id: 1
   code: AC55
   category: Beginner
   location: Jericho
