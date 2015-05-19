@@ -1,6 +1,7 @@
 class WaitListsController < ApplicationController
   before_action :logged_in_user
   before_action :logged_in_activated
+  # correct user
   before_action :logged_in_admin, only: [:update]
 
   def create
@@ -14,7 +15,7 @@ class WaitListsController < ApplicationController
       if current_user.admin
         redirect_to course_path(@wait_list.course_id)
       else
-        redirect_to class_list_path(@wait_list)
+        redirect_to current_user
       end
     else
       flash[:danger] = 'Class is open or you have already signed up'

@@ -30,7 +30,7 @@
 			<th>Actions</th>
 		</tr>
 	</thead>
-	<% @user_classes.each do |c| %>
+	<% @user.class_lists.each do |c| %>
 		<tr>
 			<td><%= c.course.code %></td>
 			<td><%= c.course.title %></td>
@@ -38,6 +38,16 @@
 			<td><%= c.course.dates %></td>
 			<td><%= c.paid %></td>
 			<td><%= link_to 'My Application', class_list_path(c), class: 'btn btn-xs btn-default' %></td>
+		</tr>
+	<% end %>
+	<% @user.wait_lists.each do |c| %>
+		<tr>
+			<td><%= c.course.code %></td>
+			<td><%= c.course.title %></td>
+			<td><%= c.course.location %></td>
+			<td><%= c.course.dates %></td>
+			<td>WAIT LIST</td>
+			<td>WAIT LIST</td>
 		</tr>
 	<% end %>
 </table>

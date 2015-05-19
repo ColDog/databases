@@ -28,7 +28,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_classes = User.find(params[:id]).class_lists
   end
 
   def edit
