@@ -8,8 +8,9 @@ a = 10
 10.times do
   Course.create!({code: "ES#{a}", boat: 'Escape', category: 'Beginner', size: 16,
                   dates: 'March 20 - 25', start_date: Faker::Time.forward(23, :morning),
-                  year: 2015, price: 330, location: 'Jericho', title: 'Escape Level 1',
-                  about: 'A Description', age_group: '10-14' })
+                  end_date: 1.year.from_now, year: 2015, price: 330,
+                  location: 'Jericho', title: 'Escape Level 1', about: 'A Description',
+                  age_group: '10-14' })
   a += 1
 end
 
@@ -18,7 +19,7 @@ b = 10
   Course.create!({code: "CS#{b}", boat: 'Pirate', category: 'Beginner', size: 16,
                   dates: 'March 20 - 25', start_date: Faker::Time.forward(50, :morning),
                   year: 2015, price: 330, location: 'Jericho', title: 'CanSail Level 1',
-                  about: 'A Description', age_group: '11-16' })
+                  about: 'A Description', age_group: '11-16', end_date: 1.year.from_now, })
   b += 1
 end
 
@@ -27,7 +28,7 @@ c = 10
   Course.create!({code: "AD#{c}", boat: 'Pirate', category: 'Beginner', size: 16,
                   dates: 'March 20 - 25', start_date: Faker::Time.forward(50, :morning),
                   year: 2015, price: 330, location: 'Jericho', title: 'CanSail Level 1',
-                  about: 'A Description', age_group: 'Adult' })
+                  about: 'A Description', age_group: 'Adult', end_date: 1.year.from_now, })
   c += 1
 end
 
@@ -36,7 +37,7 @@ d = 10
   Course.create!({code: "BC#{d}", boat: 'Advanced', category: 'Beginner', size: 16,
                   dates: 'March 20 - 25', start_date: Faker::Time.forward(50, :morning),
                   year: 2015, price: 330, location: 'Kitsilano', title: 'Basic Cruising 1',
-                  about: 'A Description', age_group: 'Adult' })
+                  about: 'A Description', age_group: 'Adult', end_date: 1.year.from_now, })
   d += 1
 end
 
@@ -45,7 +46,7 @@ e = 20
   Course.create!({code: "DS#{e}", boat: 'Pirate', category: 'Beginner', size: 16,
                   dates: 'March 20 - 25', start_date: Faker::Time.forward(50, :morning),
                   year: 2015, price: 330, location: 'Jericho', title: 'CanSail Level 2',
-                  about: 'A Description', age_group: 'Adult' })
+                  about: 'A Description', age_group: 'Adult', end_date: 1.year.from_now, })
   e += 1
 end
 

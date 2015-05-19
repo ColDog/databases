@@ -1,54 +1,89 @@
 <%= form_for @course, class: 'alone-form' do |f| %>
 	<%= render 'shared/course_error_messages' %>
-	<%= f.label :title %>
-	<%= f.text_field :title, 		class: 'form-control' %>
+
+	<div class="row">
+		<div class="col-md-3 col-sm-4">
+			<%= f.label :title %>
+			<%= f.text_field :title, class: 'form-control title' %>
+		</div>
+		<div class="col-md-9 col-sm-8">
+			<%= f.label :about %>
+			<%= f.text_area  :about, 		class: 'form-control' %>
+		</div>
+	</div>
 
 	<div class="form-group">
-	<%= f.label 	:category %>
-	<%= f.select 	:category, options_for_select(%w"Beginner Intermediate Advanced"),   class: 'form-control' %>
+		<div class="top-label">
+			<%= f.label 	:category %>
+			<%= f.select(:category, options_for_select(%w"Beginner Intermediate Advanced"), {}, { class: 'form-control inline-group' }) %>
+		</div>
 	</div>
 	<div class="form-group">
-	<%= f.label 	:location %>
-	<%= f.select 	:location, options_for_select(%w"Jericho Kitsilano"), class: 'form-control' %>
+		<div class="top-label">
+			<%= f.label 	:location %>
+			<%= f.select(:location, options_for_select(%w"Jericho Kitsilano"), {}, { class: 'form-control inline-group' }) %>
+		</div>
 	</div>
 	<div class="form-group">
-	<%= f.label 	:boat %>
-	<%= f.select 	:boat, options_for_select(%w"Pirate Escape Opti Advanced"), class: 'form-control' %>
+		<div class="top-label">
+			<%= f.label 	:boat %>
+			<%= f.select(:boat, options_for_select(%w"Pirate Escape Opti Advanced"), {}, { class: 'form-control inline-group' }) %>
+		</div>
 	</div>
 	<div class="form-group">
-	<%= f.label 	:age_group %>
-	<%= f.select	:age_group, options_for_select(%w"5-7 7-10 10-14 11-16 13-18 8-16 Adult"), class: 'form-control' %>
+		<div class="top-label">
+			<%= f.label 	:age_group %>
+			<%= f.select(:age_group, options_for_select(%w"5-7 7-10 10-14 11-16 13-18 8-16 Adult"), {}, { class: 'form-control inline-group' }) %>
+		</div>
 	</div>
 	<br>
 	<div class="form-group">
-		<%= f.label :start_date %>
-		<%= f.date_select :start_date, discard_year: true %>
+		<div class="top-label">
+			<%= f.label :start_date %>
+			<%= f.date_select(:start_date, { order: [:month, :day], discard_year: true }, { class: 'form-control inline-group' } ) %>
+		</div>
 	</div>
 	<div class="form-group">
-		<%= f.label :end_date %>
-		<%= f.date_select :end_date, discard_year: true %>
+		<div class="top-label">
+			<%= f.label :end_date %>
+			<%= f.date_select(:end_date, { order: [:month, :day], discard_year: true }, { class: 'form-control inline-group' } )%>
+		</div>
 	</div>
 	<div class="form-group">
-		<%= f.label :year %>
-		<%= f.select	:year, options_for_select(%w"2015 2016 2017"), class: 'form-control' %>
+		<div class="top-label">
+			<%= f.label :year %>
+			<%= f.select(:year, options_for_select(%w"2015 2016 2017"), {}, { class: 'form-control inline-group' }) %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="top-label">
+			<%= f.label :display_dates %>
+			<%= f.text_field :dates, 		class: 'form-control' %>
+		</div>
 	</div>
 	<br>
 
-	<%= f.label :size %>
-	<%= f.number_field :size, 		class: 'form-control inline-form', maxlength: 2 %>
+	<div class="form-group">
+		<div class="top-label">
+			<%= f.label :size %>
+			<%= f.number_field :size, 		class: 'form-control inline-group', maxlength: 2 %>
+		</div>
+	</div>
 
-	<%= f.label :code %>
-	<%= f.text_field :code, 		class: 'form-control inline-form', maxlength: 4 %>
+	<div class="form-group">
+		<div class="top-label">
+			<%= f.label :code %>
+			<%= f.text_field :code, 		class: 'form-control inline-group', maxlength: 4 %>
+		</div>
+	</div>
 
-	<%= f.label :'Price $' %>
-	<%= f.number_field :price, 		class: 'form-control inline-form', maxlength: 4 %>
+	<div class="form-group">
+		<div class="top-label">
+			<%= f.label :'Price $' %>
+			<%= f.number_field :price, 		class: 'form-control inline-group', maxlength: 4 %>
+		</div>
+	</div>
 	<br>
-
-	<%= f.label :about %>
-	<%= f.text_area  :about, 		class: 'form-control' %>
-
-	<%= f.label :display_dates %>
-	<%= f.text_field :dates, 		class: 'form-control' %>
 
 	<%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
