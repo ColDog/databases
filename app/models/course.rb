@@ -18,21 +18,21 @@ end
 class Course < ActiveRecord::Base
   has_many :class_lists
 
-  validates :title, presence: true, length: { maximum: 244 }
-  validates :category, presence: true
-  validates :location, presence: true
-  validates :boat, presence: true
-  validates :about, presence: true, length: { maximum: 500 }
-  validates :code, presence: true, length: { is: 4 }, uniqueness: true
-  validates :size, presence: true, numericality: true
-  validates :year, presence: true, numericality: true
-  validates :price, presence: true, numericality: true, length: { maximum: 4 }
+  validates :title,     presence: true, length: { maximum: 244 }
+  validates :category,  presence: true
+  validates :location,  presence: true
+  validates :boat,      presence: true
+  validates :about,     presence: true, length: { maximum: 500 }
+  validates :code,      presence: true, length: { is: 4 }, uniqueness: true
+  validates :size,      presence: true, numericality: true
+  validates :year,      presence: true, numericality: true
+  validates :price,     presence: true, numericality: true, length: { maximum: 4 }
   validates :age_group, presence: true
 
   validates_with CourseCorrectTypesValidator
 
   # scope searches and filters
-  scope :search,    -> (search)    { where('code like ?',"#{search}%") }
+  scope :search,    -> (search)   { where('code like ?',"#{search}%") }
   scope :location,  -> (location) { where location: location }
   scope :category,  -> (category) { where category: category }
   scope :boat,      -> (boat)     { where boat: boat }

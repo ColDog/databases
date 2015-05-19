@@ -52,4 +52,7 @@ class User < ActiveRecord::Base
   validates :password,
             length: { minimum: 6 },
             allow_blank: true
+
+  scope :search,    -> (search)   { where('lower(name) like ? OR email like ?', "#{search.downcase}%", "#{search.downcase}%") }
+  scope :phone,     -> (phone)    { where('phone like ?', "#{phone}%" ) }
 end
