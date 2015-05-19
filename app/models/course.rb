@@ -1,20 +1,3 @@
-class CourseCorrectTypesValidator < ActiveModel::Validator
-  def validate(record)
-    unless %w"5-7 7-10 10-14 11-16 13-18 8-16 Adult".include?(record.age_group)
-      record.errors[:name] << 'Wrong Age Group'
-    end
-    unless %w"Pirate Escape Opti Advanced".include?(record.boat)
-      record.errors[:name] << 'Wrong Boat Type'
-    end
-    unless %w"Jericho Kitsilano".include?(record.location)
-      record.errors[:name] << 'Wrong Location'
-    end
-    unless %w"Beginner Intermediate Advanced".include?(record.category)
-      record.errors[:name] << 'Wrong Category'
-    end
-  end
-end
-
 class Course < ActiveRecord::Base
   has_many :class_lists, dependent: :destroy
   has_many :wait_lists,  dependent: :destroy
@@ -44,10 +27,11 @@ class Course < ActiveRecord::Base
     end
   end
 
+  include References
   validates_with CourseCorrectTypesValidator
 
   # scope searches and filters
-  scope :search,    -> (search)      { where('code like ? OR title like ?',"#{search}%", "#{search}%") }
+  scope :search,    -> (search)     { where('code like ? OR title like ?',"#{search}%", "#{search}%") }
   scope :location,  -> (location)   { where location: location }
   scope :category,  -> (category)   { where category: category }
   scope :boat,      -> (boat)       { where boat: boat }

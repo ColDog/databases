@@ -28,13 +28,12 @@ class ClassListsController < ApplicationController
   end
 
   def show
-    class_list = ClassList.find(params[:id])
-    wait_list = WaitList.find(params[:id])
-    if !class_list.nil?
-      @class_list = class_list
+    id = params[:id]
+    if ClassList.find(id).present?
+      @class_list = ClassList.find(id)
       @is_wait_list = false
-    elsif !wait_list.nil?
-      @class_list = wait_list
+    elsif WaitList.find(id).present?
+      @class_list = WaitList.find(id)
       @is_wait_list = true
     end
   end
