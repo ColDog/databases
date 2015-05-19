@@ -4,7 +4,7 @@ class ClassListsController < ApplicationController
   before_action :logged_in_admin, only: [:destroy, :update]
 
   def create
-    @class_list = ClassList.new(class_params)
+    @class_list = ClassList.create({user_id: current_user.id, course_id: params[:id]}) ## TODO is this secure?
     if @class_list.save
       flash[:success] = 'Successfully signed up for class'
       redirect_to class_list_path(@class_list)
