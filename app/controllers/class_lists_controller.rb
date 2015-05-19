@@ -1,5 +1,6 @@
 class ClassListsController < ApplicationController
   before_action :logged_in_user
+  before_action :logged_in_activated
   before_action :logged_in_admin, only: [:destroy, :update]
 
   def create

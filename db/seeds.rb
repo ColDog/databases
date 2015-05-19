@@ -66,6 +66,9 @@ end
               })
 end
 
+# admin user
+User.create({name: 'Admin', email: 'admin@admin.com', phone: '6042247245', password: 'password', password_confirmation: 'password', admin: true})
+
 # class sign ups
 u = 1
 16.times do

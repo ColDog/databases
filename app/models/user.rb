@@ -13,7 +13,9 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
 
   def phone=(value)
-    self[:phone] = value.gsub(/\D/, '')
+    if value.class != Fixnum
+      self[:phone] = value.gsub(/\D/, '')
+    end
   end
 
   private

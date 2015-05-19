@@ -60,6 +60,14 @@ module SessionsHelper
     end
   end
 
+  # helper for logged in activated user
+  def logged_in_activated
+    unless current_user.activated?
+      flash[:danger] = 'Please Activate Your Account'
+      redirect_to user_path(current_user)
+    end
+  end
+
   # checks if current user is the user argument
   def current_user?(user)
     user == current_user

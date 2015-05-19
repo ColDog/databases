@@ -10,9 +10,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       UserMailer.account_activation(@user).deliver_now
-      flash[:info] = "Please check your email to activate your account."
-      redirect_to all_path
+      flash[:info] = 'Please check your email to activate your account.'
+      redirect_to @user
     else
       render 'new'
     end
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = 'Account updated'
-      redirect_to :back
+      redirect_to @user
     else
       render 'edit'
     end

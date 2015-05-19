@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :logged_in_user,  except: [:adult, :youth, :all]
-  before_filter :logged_in_admin, except: [:adult, :youth, :all]
+  before_action :logged_in_user,  except: [:all]
+  before_filter :logged_in_admin, except: [:all]
 
   #PUBLIC
   def all

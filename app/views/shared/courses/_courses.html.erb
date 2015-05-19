@@ -13,19 +13,24 @@
 
 			<!--Sign Up Cell-->
 			<td>
-			<% if logged_in? %>
-				<%= form_for @class_list, url: class_lists_path(@class_list), html: { method: :post } do |f| %>
-					<%= f.hidden_field :course_id, value: course.id %>
-					<%= f.hidden_field :user_id, value: current_user.id %>
-					<% if course.class_lists.count >= course.size %>
-						<strong>Class Full!</strong>
+
+				<% if course.class_lists.count >= course.size %>
+					<strong>Class Full!</strong>
+				<% else %>
+					<% if logged_in? %>
+						<% if current_user.activated %>
+							<%= form_for @class_list, url: class_lists_path(@class_list), html: { method: :post } do |f| %>
+								<%= f.hidden_field :course_id, value: course.id %>
+								<%= f.hidden_field :user_id, value: current_user.id %>
+							<% end %>
+						<% else %>
+							<%= link_to 'Activate Account', user_path(current_user), class: 'btn btn-primary btn-xs'  %>
+						<% end %>
 					<% else %>
-						<%= f.submit 'Sign Up', class: 'btn btn-primary btn-xs' %>
+						<%= link_to 'Register', login_path, class: 'btn btn-primary btn-xs' %>
 					<% end %>
 				<% end %>
-			<% else %>
-				<%= link_to 'Register', login_path, class: 'btn btn-primary btn-xs' %>
-			<% end %>
+
 			</td>
 
 		</tr>
