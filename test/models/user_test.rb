@@ -6,8 +6,13 @@ class UserTest < ActiveSupport::TestCase
       name: 'Example User',
       email: 'usern@example.com',
       phone: 6546546547,
-      password: 'foobarerr',
-      password_confirmation: 'foobarerr'
+      age: 22,
+      password: 'password',
+      password_confirmation: 'password',
+      activated: false,
+      admin: false,
+      staff: false,
+      waiver: false
     )
   end
 
@@ -36,15 +41,17 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'email validation should accept valid addresses' do
-    valid_addresses = ['user@randoms.com', 'USER@foo.COM', 'A_US-ER@foo.bar.org', 'first.last@foo.jp', 'alice+bob@baz.cn']
+    valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
+                         first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
       @user.email = valid_address
-      assert(@user.save) && assert(@user.valid?)
+      assert(@user.valid?)
     end
   end
 
   test 'email validation should reject invalid addresses' do
-    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com]
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
+                           foo@bar_baz.com foo@bar+baz.com]
     invalid_addresses.each do |invalid_address|
       @user.email = invalid_address
       assert(!@user.save) && assert_not(@user.valid?)
