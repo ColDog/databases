@@ -36,6 +36,41 @@ module ClassSize
   end
 
   # for wait list model
+  class WaitSizeValidator < ActiveModel::Validator
+
+    def validate(record)
+      if record.course_id != nil
+        max_size = record.course.size
+        course_id = record.course_id
+        current_size = Course.find(course_id).wait_lists.count
+        if current_size >= max_size.to_i
+          record.errors[:name] << 'Class is full!'
+        end
+      else
+        record.errors[:name] << 'No course_id!'
+      end
+    end
+
+  end
+
+  # for wait list model
+  class UniqueWaitUserValidator < ActiveModel::Validator
+
+    def validate(record)
+      if record.course_id != nil
+        user = record.user_id
+        course_id = record.course_id
+        unless Course.find(course_id).wait_lists.find_by_user_id(user) == nil
+          record.errors[:name] << "You've Already Signed Up!"
+        end
+      else
+        record.errors[:name] << 'No course_id!'
+      end
+    end
+
+  end
+
+  # for wait list model
   class WaitListOnlyIfFull < ActiveModel::Validator
 
     def validate(record)

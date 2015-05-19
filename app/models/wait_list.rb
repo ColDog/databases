@@ -10,5 +10,7 @@ class WaitList < ActiveRecord::Base
 
   include ClassSize
   validates_with WaitListOnlyIfFull
+  validates_with WaitSizeValidator
+  validates_with UniqueWaitUserValidator
 
 end

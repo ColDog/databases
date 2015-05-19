@@ -1,13 +1,15 @@
 <h1>Users</h1>
 
-<%= form_tag('#', method: :get, class: 'inline-form') do %>
-	<label>Search</label>
-	<%= text_field_tag :search, params[:search], class: 'form-control inline-group', placeholder: 'search users'  %>
-
-	<label>Search Phone</label>
-	<%= text_field_tag :phone, params[:phone], class: 'form-control inline-group', placeholder: 'search phone numbers'  %>
-
-	<button class="btn btn-default btn-sm" type="submit">Search</button>
+<%= form_tag('#', method: :get, class: 'well') do %>
+	<div class="top-label">
+		<label>Search</label>
+		<%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'search users'  %>
+	</div>
+	<div class="top-label">
+		<label>Search Phone</label>
+		<%= text_field_tag :phone, params[:phone], class: 'form-control', placeholder: 'search phone numbers'  %>
+	</div>
+	<button class="btn btn-default" type="submit">Search</button>
 <% end %>
 
 <table class="table">
