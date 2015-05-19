@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :class_lists
+  has_secure_password
 
   attr_accessor :remember_token, :activation_token
   before_save   :downcase_email
@@ -22,7 +23,6 @@ class User < ActiveRecord::Base
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
 
-  has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
 
 
