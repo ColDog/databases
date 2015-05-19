@@ -8,20 +8,26 @@
 <table class="table">
 	<thead>
 	<tr>
+		<th>#</th>
 		<th>Name</th>
 		<th>Phone</th>
 		<th>Email</th>
 		<th>Age</th>
+		<th>Account Activated</th>
+		<th>Waiver Signed</th>
 		<th>Health Notes</th>
 		<th>Course: Paid?</th>
 	</tr>
 	</thead>
 	<% @users.each do |user| %>
 		<tr>
+			<td><%= user.id %></td>
 			<td><%= user.name %></td>
 			<td><%= user.phone %></td>
 			<td><%= user.email %></td>
 			<td><%= user.age %></td>
+			<td><%= user.activated %></td>
+			<td><%= user.waiver %></td>
 			<td><%= user.health_notes %></td>
 			<td>
 				<% user.class_lists.each do |c| %>
