@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'sdoc', group: :doc
 gem 'bcrypt'
+gem 'faker'
 
 
 group :development, :test do
