@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user,  only: [:index, :show, :edit, :update]
-  before_action :logged_in_admin, only: [:index]
+  before_action :logged_in_admin, only: [:index, :destroy]
   before_action :correct_user,    only: [:show, :edit, :update]
 
   def new
@@ -53,6 +53,12 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:danger] = 'User Deleted'
+    redirect_to users_path
   end
 
   private

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   include PasswordReset
 
-  has_many :class_lists
+  has_many :class_lists, dependent: :destroy
 
   has_secure_password
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -54,5 +54,5 @@ class User < ActiveRecord::Base
             allow_blank: true
 
   scope :search,    -> (search)   { where('lower(name) like ? OR email like ?', "#{search.downcase}%", "#{search.downcase}%") }
-  scope :phone,     -> (phone)    { where('phone like ?', "#{phone}%" ) }
+  scope :phone,     -> (phone)    { where(phone: phone.to_i) }
 end
