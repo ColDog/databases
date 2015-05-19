@@ -4,9 +4,11 @@ class WaitList < ActiveRecord::Base
 
   validates :user_id,   presence: true
   validates :course_id, presence: true
-  include ClassSize
+
   include ReferentialIntegrity
   validates_with CourseAndUserExist
+
+  include ClassSize
   validates_with WaitListOnlyIfFull
 
 end

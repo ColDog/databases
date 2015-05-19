@@ -18,25 +18,6 @@ class Course < ActiveRecord::Base
   include CorrectTypes
   validates_with CourseCorrectTypesValidator
 
-  # scope searches and filters
-  scope :search,    -> (search)     { where('code like ? OR title like ?',"#{search}%", "#{search}%") }
-  scope :location,  -> (location)   { where location: location }
-  scope :category,  -> (category)   { where category: category }
-  scope :boat,      -> (boat)       { where boat: boat }
-  scope :age_group, -> (age_group)  { where age_group: age_group }
-  scope :not_age,   -> (not_age)    { where('age_group != ?', "#{not_age}") }
-  scope :start_date,-> (start_date) { where(start_date: start_date..8.months.from_now).order(:start_date)  }
-  scope :end_date,  -> (end_date)   { where(end_date: 8.months.ago..end_date).order(:end_date)  }
-
-  # controller methods
-  def self.adult
-    self.where('age_group = ?', 'Adult')
-  end
-
-  def self.youth
-    self.where('age_group != ?', 'Adult')
-  end
-
   # validation methods
   def start_date_is_date
     unless start_date.class == Date
@@ -60,6 +41,27 @@ class Course < ActiveRecord::Base
     if end_date < start_date
       errors.add(:end_date, 'End date should be after the start date')
     end
+  end
+
+
+
+  # scope searches and filters
+  scope :search,    -> (search)     { where('code like ? OR title like ?',"#{search}%", "#{search}%") }
+  scope :location,  -> (location)   { where location: location }
+  scope :category,  -> (category)   { where category: category }
+  scope :boat,      -> (boat)       { where boat: boat }
+  scope :age_group, -> (age_group)  { where age_group: age_group }
+  scope :not_age,   -> (not_age)    { where('age_group != ?', "#{not_age}") }
+  scope :start_date,-> (start_date) { where(start_date: start_date..8.months.from_now).order(:start_date)  }
+  scope :end_date,  -> (end_date)   { where(end_date: 8.months.ago..end_date).order(:end_date)  }
+
+  # controller methods
+  def self.adult
+    self.where('age_group = ?', 'Adult')
+  end
+
+  def self.youth
+    self.where('age_group != ?', 'Adult')
   end
 
 end
