@@ -68,6 +68,7 @@ end
 
 # admin user
 User.create({name: 'Admin', email: 'admin@admin.com', phone: '6042247245', password: 'password', password_confirmation: 'password', admin: true})
+User.create({name: 'Test User', email: 'test@test.com', phone: '6042247245', password: 'password', password_confirmation: 'password', admin: false, activated: true})
 
 # class sign ups
 u = 1
