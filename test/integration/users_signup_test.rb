@@ -35,7 +35,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     user = assigns(:user)
     assert_not user.activated?
 
-    # Try to log in before activation.
+    # log in before activation is ok
     log_in_as(user)
     assert logged_in?
 
