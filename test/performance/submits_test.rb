@@ -29,6 +29,7 @@ class SubmitsTest < ActionDispatch::PerformanceTest
                              password_confirmation: 'password' }
   end
 
+  # test crashes the test suite. Bug?
   # test 'course create' do
   #   log_in_as @admin
   #   post courses_path course: { code: '', boat: 'Pirate', category: 'Intermediate', size: 16,
