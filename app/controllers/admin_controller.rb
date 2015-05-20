@@ -1,6 +1,10 @@
 class AdminController < ApplicationController
   before_action :logged_in_admin
 
+  def home
+
+  end
+
   def new_user
     @password = User.new_token
   end
@@ -19,31 +23,29 @@ class AdminController < ApplicationController
   end
 
   def new_class
-    @courses = Course.where(nil)
-    filter_params(params).each do |search, result|
-      @courses = @courses.public_send(search, result) if result.present?
-    end
+    @courses = Course.search(params[:class_search])
+    @users = User.search(params[:user_search])
   end
 
   def create_class_list
     @class_list = ClassList.new(class_params)
-    if @class_list.save(validate: false)
+    if @class_list.save
       flash[:success] = 'User added to class'
       redirect_to users_path
     else
       flash[:danger] = 'failed to add user to class'
-      render 'new_class'
+      redirect_to users_path
     end
   end
 
   def create_wait_list
     @wait_list = WaitList.new(wait_params)
-    if @wait_list.save(validate: false)
+    if @wait_list.save
       flash[:success] = 'User added to wait list'
       redirect_to users_path
     else
       flash[:danger] = 'failed to add user to wait list'
-      render 'new_class'
+      redirect_to users_path
     end
   end
 

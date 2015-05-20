@@ -19,11 +19,12 @@ Rails.application.routes.draw do
   resources   :wait_lists
 
   # create users from admin panel
-  get         'admin_user'      => 'admin#new_user'
-  post        'admin_user'      => 'admin#create_user'
-  get         'admin_class'     => 'admin#new_class'
-  post        'admin_class'     => 'admin#create_class_list'
-  post        'admin_wait'      => 'admin#create_wait_list'
+  get         'admin/home'      => 'admin#home'
+  get         'admin/user'      => 'admin#new_user'
+  post        'admin/user'      => 'admin#create_user'
+  get         'admin/class'     => 'admin#new_class'
+  post        'admin/class'     => 'admin#create_class_list'
+  post        'admin/wait'      => 'admin#create_wait_list'
 
   # password reset and account activation
   resources   :account_activations, only: [:edit]
