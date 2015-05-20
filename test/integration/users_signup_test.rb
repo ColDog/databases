@@ -25,7 +25,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_difference 'User.count', 1 do
       post users_path, user: { name:                  'Example User',
                                email:                 'user@example.com',
-                               phone:                  6042247245,
+                               phone:                  '6042247245',
                                password:              'password',
                                password_confirmation: 'password' }
     end
@@ -37,21 +37,21 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
     # Try to log in before activation.
     log_in_as(user)
-    assert_not logged_in?
+    assert logged_in?
 
     # Invalid activation token
     get edit_account_activation_path('invalid token')
-    assert_not logged_in?
+    assert_not user.activated?
 
     # Valid token, wrong email
     get edit_account_activation_path(user.activation_token, email: 'wrong')
-    assert_not logged_in?
+    assert_not user.activated?
 
     # Valid activation token
     get edit_account_activation_path(user.activation_token, email: user.email)
     assert user.reload.activated?
     follow_redirect!
     assert_template 'users/show'
-    assert logged_in?
+    assert user.activated?
   end
 end

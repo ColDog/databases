@@ -3,19 +3,9 @@ require 'test_helper'
 class CourseTest < ActiveSupport::TestCase
 
   def setup
-    @course = Course.new(
-      code: 'AC21',
-      boat: 'Escape',
-      category: 'Beginner',
-      size: 16,
-      dates: 'march 20 - 25, 9 - 12',
-      year: 2015,
-      price: 330,
-      location: 'Jericho',
-      title: 'title',
-      about: 'a test description',
-      age_group: '5-7'
-    )
+    @course = Course.new(code: 'AC21', boat: 'Escape', category: 'Beginner', size: 16, dates: 'march 20 - 25, 9 - 12',
+                         year: 2015, price: 330, start_date: Date.today, end_date: Date.tomorrow, location: 'Jericho',
+                         title: 'title', about: 'a test description', age_group: '5-7')
   end
 
   test 'course should be a valid course' do

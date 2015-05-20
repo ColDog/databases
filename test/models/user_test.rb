@@ -2,22 +2,19 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(
-      name: 'Example User',
-      email: 'usern@example.com',
-      phone: 6546546547,
-      age: 22,
-      password: 'password',
-      password_confirmation: 'password',
-      activated: false,
-      admin: false,
-      staff: false,
-      waiver: false
-    )
+    @user = User.new(     name: 'Example User', email: 'user@example.com', phone: '654-654-6547', age: 22,
+                          health_notes: 'healthy', password: 'password', password_confirmation: 'password',
+                          activated: false, admin: false, staff: false, waiver: false)
+  end
+
+  test 'should save' do
+    assert User.create!({name: 'Example User', email: 'user@example.com', phone: '654-654-6547', age: 22,
+                         health_notes: 'healthy', password: 'password', password_confirmation: 'password',
+                         activated: false, admin: false, staff: false, waiver: false})
   end
 
   test 'should be valid' do
-    assert(@user.save) && assert(@user.valid?)
+    assert @user.valid?
   end
 
   test 'name should be present' do
@@ -71,7 +68,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'phone number should not be too long' do
-    @user.phone = 1234567891011
+    @user.phone = '1234567891011'
     assert(!@user.save) && assert_not(@user.valid?)
   end
 

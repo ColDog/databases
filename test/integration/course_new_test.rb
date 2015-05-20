@@ -13,18 +13,10 @@ class CourseNewTest < ActionDispatch::IntegrationTest
     get new_course_path
 
     assert_difference 'Course.count', +1 do
-      post courses_path course: {
-                                  code: 'AC25',
-                                  boat: 'Pirate',
-                                  category: 'Intermediate',
-                                  size: 16,
-                                  dates: 'March 20 - 25',
-                                  year: 2015,
-                                  price: 330,
-                                  location: 'Jericho',
-                                  title: 'Cansail Level 1',
-                                  about: 'A Description',
-                                  age_group: '10-14'}
+      post courses_path course: { code: 'AC25', boat: 'Pirate', category: 'Intermediate', size: 16,
+                                 dates: 'March 20 - 25', year: 2015, price: 330, location: 'Jericho',
+                                 title: 'Cansail Level 1', about: 'A Description', age_group: '10-14',
+                                 start_date: Date.today, end_date: Date.tomorrow }
     end
   end
 
@@ -34,18 +26,10 @@ class CourseNewTest < ActionDispatch::IntegrationTest
     get new_course_path
 
     assert_no_difference 'Course.count' do
-      post courses_path course: {
-                           code: '',
-                           boat: 'Pirate',
-                           category: 'Intermediate',
-                           size: 16,
-                           dates: 'March 20 - 25',
-                           year: 2015,
-                           price: 330,
-                           location: 'Jericho',
-                           title: 'Cansail Level 1',
-                           about: 'A Description',
-                           age_group: '10-14'}
+      post courses_path course: { code: '', boat: 'Pirate', category: 'Intermediate', size: 16,
+                                 dates: 'March 20 - 25', year: 2015, price: 330, location: 'Jericho',
+                                 title: 'Cansail Level 1', about: 'A Description', age_group: '10-14',
+                                 start_date: Date.today, end_date: Date.tomorrow }
     end
   end
 
