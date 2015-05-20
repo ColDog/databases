@@ -12,7 +12,29 @@ colin:
 non_admin:
   id: 1
   name: Jimbo
-  email: jimbo@test.ca
+  email: jimbo@test1.ca
+  password_digest: <%= User.digest('password') %>
+  age: 25
+  health_notes: No Notes
+  phone: 7787091959
+  admin: false
+  activated: true
+  
+full_2:
+  id: 3
+  name: Jimbo
+  email: jimbo@test2.ca
+  password_digest: <%= User.digest('password') %>
+  age: 25
+  health_notes: No Notes
+  phone: 7787091959
+  admin: false
+  activated: true
+
+full_3:
+  id: 4
+  name: Jimbo
+  email: jimbo@test3.ca
   password_digest: <%= User.digest('password') %>
   age: 25
   health_notes: No Notes

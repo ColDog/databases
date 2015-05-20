@@ -13,3 +13,17 @@ cansail:
   title: course
   about: description
   age_group: 5-7
+
+course_full:
+  id: 2
+  code: AC57
+  category: Beginner
+  location: Jericho
+  boat: Escape
+  size: 3
+  dates: String
+  year: 2015
+  price: 300
+  title: course
+  about: description
+  age_group: 5-7

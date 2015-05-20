@@ -2,17 +2,14 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="Rails macsailing: development" uuid="508f60da-44b4-4356-83e9-9fc56fc7bd6d">
-      <first-sync>true</first-sync>
       <user-name>&lt;%= ENV['PG_USER'] %&gt;</user-name>
       <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddffadfeddff5dffadfebdff9dff9df8ddff7df8adf8fdf94</user-password>
     </data-source>
     <data-source name="Rails macsailing: test" uuid="18a480be-d033-4623-ab1c-d75d5114e0cf">
-      <first-sync>true</first-sync>
       <user-name>&lt;%= ENV['PG_USER'] %&gt;</user-name>
       <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddffadfeddff5dffadfebdff9dff9df8ddff7df8adf8fdf94</user-password>
     </data-source>
     <data-source name="Rails macsailing: production" uuid="b9b1e63a-ef3c-47c5-8b7d-837e9e5de2a4">
-      <first-sync>true</first-sync>
       <user-name>macsailing</user-name>
       <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddff8dfefdfebdfe9dffedf87dff8dfebdfe3dfe6dff9df87dfe8dfe6dfe5dfeddff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
     </data-source>

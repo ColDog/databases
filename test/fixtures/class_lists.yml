@@ -5,3 +5,21 @@ class_list_one:
   user_id: 1
   course_id: 1
   paid: false
+
+class_list_full_1:
+  id: 2
+  user_id: 2
+  course_id: 2
+  paid: false
+
+class_list_full_2:
+  id: 3
+  user_id: 3
+  course_id: 2
+  paid: false
+
+class_list_full_3:
+  id: 4
+  user_id: 4
+  course_id: 2
+  paid: false
