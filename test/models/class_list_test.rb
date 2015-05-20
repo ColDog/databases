@@ -21,6 +21,16 @@ class ClassListTest < ActiveSupport::TestCase
     assert(!@class.save) && assert_not(@class.valid?)
   end
 
+  test 'course_id should exist' do
+    @class.course_id = 50
+    assert(!@class.save) && assert_not(@class.valid?)
+  end
+
+  test 'user_id should exist' do
+    @class.user_id = 50
+    assert(!@class.save) && assert_not(@class.valid?)
+  end
+
   test 'paid as true is valid' do
     @class.paid = true
     assert(@class.valid?)

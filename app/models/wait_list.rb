@@ -6,11 +6,16 @@ class WaitList < ActiveRecord::Base
   validates :course_id, presence: true
 
   include ReferentialIntegrity
-  validates_with CourseAndUserExist
+  validates_with CourseAndUserExist,      if: :no_errors
 
   include ClassSize
-  validates_with WaitListOnlyIfFull
-  validates_with WaitSizeValidator
-  validates_with UniqueWaitUserValidator
+  validates_with WaitListOnlyIfFull,      if: :no_errors
+  validates_with WaitSizeValidator,       if: :no_errors
+  validates_with UniqueWaitUserValidator, if: :no_errors
+
+  private
+    def no_errors
+      errors.empty?
+    end
 
 end

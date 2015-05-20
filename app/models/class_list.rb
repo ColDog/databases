@@ -6,11 +6,11 @@ class ClassList < ActiveRecord::Base
   validates :course_id, presence: true
 
   include ReferentialIntegrity
-  validates_with CourseAndUserExist
+  validates_with CourseAndUserExist,       if: :no_errors
 
   include ClassSize
-  validates_with ClassSizeValidator
-  validates_with UniqueClassUserValidator, on: [:create]
+  validates_with ClassSizeValidator,       if: :no_errors
+  validates_with UniqueClassUserValidator, if: :no_errors, on: [:create]
 
   after_destroy :add_wait_listed_users
 
@@ -20,6 +20,10 @@ class ClassList < ActiveRecord::Base
       ClassList.create(course_id: self.course.id, user_id: self.course.wait_lists.first.user.id) # TODO first might not be first in line
       WaitList.first.destroy
     end
+  end
+
+  def no_errors
+    errors.empty?
   end
 
 end

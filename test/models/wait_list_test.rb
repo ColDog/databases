@@ -17,17 +17,22 @@ class WaitListTest < ActiveSupport::TestCase
   end
 
   test 'user_id should be present' do
-    @class.user_id = nil
+    @wait.user_id = nil
     assert(!@wait.save) && assert_not(@wait.valid?)
   end
 
   test 'course_id should be present' do
-    @class.course_id = nil
+    @wait.course_id = nil
     assert(!@wait.save) && assert_not(@wait.valid?)
   end
 
-  test 'user_id should be present' do
-    @class.user_id = nil
+  test 'user_id should exist' do
+    @wait.user_id = 50
+    assert(!@wait.save) && assert_not(@wait.valid?)
+  end
+
+  test 'course_id should exist' do
+    @wait.user_id = 50
     assert(!@wait.save) && assert_not(@wait.valid?)
   end
 
