@@ -3,25 +3,6 @@
 <h5><%= @course.category %> <%= @course.code %> Max Size: <%= @course.size %></h5>
 <hr>
 <h3>Size: <%= @course.class_lists.count %> / <%= @course.size %>  </h3>
-<hr>
-<div class="row">
-	<div class="col-md-6 col-sm-6">
-		<h4>Add user to class list:</h4>
-		<%= form_for @new_class_list, url: class_lists_path, method: :post do |f| %>
-			<%= f.number_field :user_id, class: 'form-control inline-group', placeholder: 'user id' %>
-			<%= f.hidden_field :course_id, value: @course.id %>
-			<%= f.submit 'Add User', class: 'btn btn-default' %>
-		<% end %>
-	</div>
-	<div class="col-md-6 col-sm-6">
-		<h4>Add user to wait list:</h4>
-		<%= form_for @new_wait_list, url: wait_lists_path, method: :post do |f| %>
-			<%= f.number_field :user_id, class: 'form-control inline-group', placeholder: 'user id' %>
-			<%= f.hidden_field :course_id, value: @course.id %>
-			<%= f.submit 'Add User', class: 'btn btn-default' %>
-		<% end %>
-	</div>
-</div>
 
 <hr>
 <h4>Class List</h4>

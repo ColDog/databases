@@ -1,0 +1,36 @@
+<h1>Admin add user to course</h1>
+<p>This page will add a user to a course by their id. This will skip all validations so make sure the information is correct!</p>
+
+<hr>
+<h4>Add user to class list</h4>
+<%= form_for(:class_list, url: admin_class_path) do |f| %>
+
+	<div class="top-label">
+		<%= f.label :course_id %>
+		<%= f.number_field :course_id, class: 'form-control inline-group' %>
+	</div>
+	<div class="top-label">
+		<%= f.label :user_id %>
+		<%= f.number_field :user_id, value: params[:user_id], class: 'form-control inline-group' %>
+	</div>
+		<%= f.label :paid %>
+		<%= f.check_box :paid %>
+
+	<%= f.submit 'Add User to Class', class: 'btn btn-primary' %>
+<% end %>
+<hr>
+<h4>Add user to wait list</h4>
+<%= form_for(:wait_list, url: admin_wait_path) do |f| %>
+
+	<div class="top-label">
+		<%= f.label :course_id %>
+		<%= f.number_field :course_id, class: 'form-control inline-group' %>
+	</div>
+	<div class="top-label">
+		<%= f.label :user_id %>
+		<%= f.number_field :user_id, value: params[:user_id], class: 'form-control inline-group' %>
+	</div>
+
+	<%= f.submit 'Add User to Wait List', class: 'btn btn-primary' %>
+<% end %>
+<hr>

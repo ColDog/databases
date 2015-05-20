@@ -1,29 +1,17 @@
 class WaitListsController < ApplicationController
   before_action :logged_in_user
   before_action :logged_in_activated
-  # correct user
-  before_action :logged_in_admin, only: [:update]
+  before_action :correct_user,        only: [:destroy]
+  before_action :logged_in_admin,     only: [:update]
 
   def create
-    if current_user.admin
-      @wait_list = WaitList.create(wait_params)
-    else
-      @wait_list = current_user.wait_lists.build(wait_params)
-    end
+    @wait_list = current_user.wait_lists.build(wait_params)
     if @wait_list.save
       flash[:success] = 'Successfully signed up for wait list'
-      if current_user.admin
-        redirect_to course_path(@wait_list.course_id)
-      else
-        redirect_to current_user
-      end
+      redirect_to current_user
     else
       flash[:danger] = 'Class is open or you have already signed up'
-      if current_user.admin
-        redirect_to course_path(@wait_list.course_id)
-      else
-        redirect_to all_path
-      end
+      redirect_to all_path
     end
   end
 
