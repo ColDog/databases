@@ -13,9 +13,12 @@ gem 'jbuilder'
 gem 'sdoc', group: :doc
 gem 'bcrypt'
 gem 'faker'
+
 gem 'chartkick'
 gem 'groupdate'
 
+gem 'rails-perftest'
+gem 'ruby-prof'
 
 group :development, :test do
   gem 'guard'

@@ -145,6 +145,7 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails-perftest (0.0.6)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -161,6 +162,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.0)
     ref (1.0.5)
+    ruby-prof (0.15.8)
     ruby-progressbar (1.7.5)
     sass (3.4.13)
     sass-rails (5.0.3)
@@ -220,7 +222,9 @@ DEPENDENCIES
   pg
   puma (= 2.11.1)
   rails (= 4.2.0)
+  rails-perftest
   rails_12factor (= 0.0.2)
+  ruby-prof
   sass-rails
   sdoc
   spring
