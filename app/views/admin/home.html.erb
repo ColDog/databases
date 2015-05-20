@@ -1,3 +1,17 @@
 <h1>Admin Panel</h1>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
-<% %>
+<div class="row">
+	<div class="col-md-4">
+		<h4>Registrations</h4>
+		<%= line_chart @registrations %>
+	</div>
+	<div class="col-md-4">
+		<h4>Users</h4>
+		<%= line_chart @users %>
+	</div>
+	<div class="col-md-4">
+		<h4>Class Size</h4>
+		<%= line_chart @class_size.map{|course| {name: course.code, data: course.class_lists.group_by_hour(:created_at).count} } %>
+	</div>
+</div>

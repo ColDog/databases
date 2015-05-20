@@ -13,6 +13,8 @@ gem 'jbuilder'
 gem 'sdoc', group: :doc
 gem 'bcrypt'
 gem 'faker'
+gem 'chartkick'
+gem 'groupdate'
 
 
 group :development, :test do

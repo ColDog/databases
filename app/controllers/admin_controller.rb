@@ -2,7 +2,9 @@ class AdminController < ApplicationController
   before_action :logged_in_admin
 
   def home
-
+    @registrations = ClassList.group_by_day(:created_at).count
+    @users = User.group_by_day(:created_at).count
+    @class_size = Course.all
   end
 
   def new_user
@@ -12,9 +14,9 @@ class AdminController < ApplicationController
   def create_user
     @user = User.new(user_params)
     if @user.save(validate: false)
-      # @user.create_reset_digest
-      # @user.send_password_reset_email
-      flash[:success] = 'Created user.'
+      @user.create_reset_digest
+      @user.send_password_reset_email
+      flash[:success] = "Created user with id: #{@user.id} and name: #{@user.name}"
       redirect_to controller: 'admin', action: 'new_class', user_id: @user.id
     else
       flash[:danger] = 'Failed to create user'

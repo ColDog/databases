@@ -1,42 +1,78 @@
 <h1>Admin add user to course</h1>
-<p>This page will add a user to a course by their id. This will skip all validations so make sure the information is correct!</p>
-
-<hr>
-<h4>Search for users and classes</h4>
-<%= form_tag('#', method: :get, class: 'inline-form') do %>
-	<%= text_field_tag :class_search, params[:class_search], class: 'form-control inline-group', placeholder: 'search courses' %>
-	<%= text_field_tag :user_search, params[:user_search], class: 'form-control inline-group', placeholder: 'search users' %>
-	<%= submit_tag 'Submit', class: 'btn btn-default' %>
-<% end %>
-<hr>
+<p>This page will add a user to a course by their id.</p>
 
 <div class="row">
-	<div class="col-md-6 col-sm-6">
-		<h3>Courses</h3>
+	<div class="col-md-6">
+		<h4>Add user to class list</h4>
+		<%= form_for(:class_list, url: admin_class_path) do |f| %>
+
+			<div class="top-label">
+				<%= f.label :course_id %>
+				<%= f.number_field :course_id, value: params[:course_id], class: 'form-control inline-group' %>
+			</div>
+			<div class="top-label">
+				<%= f.label :user_id %>
+				<%= f.number_field :user_id, value: params[:user_id], class: 'form-control inline-group' %>
+			</div>
+			<%= f.label :paid %>
+			<%= f.check_box :paid %>
+
+			<%= f.submit 'Add User to Class', class: 'btn btn-primary' %>
+		<% end %>
 	</div>
-	<div class="col-md-6 col-sm-6">
-		<h3>Users</h3>
+	<div class="col-md-6">
+		<h4>Add user to wait list</h4>
+		<%= form_for(:wait_list, url: admin_wait_path) do |f| %>
+
+			<div class="top-label">
+				<%= f.label :course_id %>
+				<%= f.number_field :course_id, value: params[:course_id], class: 'form-control inline-group' %>
+			</div>
+			<div class="top-label">
+				<%= f.label :user_id %>
+				<%= f.number_field :user_id, value: params[:user_id], class: 'form-control inline-group' %>
+			</div>
+
+			<%= f.submit 'Add User to Wait List', class: 'btn btn-primary' %>
+		<% end %>
 	</div>
 </div>
 
-<div class="row fixed-height">
-	<div class="col-md-6 col-sm-6">
+<hr>
+<%= form_tag('#', method: :get) do %>
+	<div class="row">
+		<div class="col-md-6 col-sm-6">
+			<%= text_field_tag :class_search, params[:class_search], class: 'form-control inline-group', placeholder: 'search courses' %>
+			<%= submit_tag 'Submit', class: 'btn btn-default' %>
+			<h3>Courses</h3>
+		</div>
+		<div class="col-md-6 col-sm-6">
+			<%= text_field_tag :user_search, params[:user_search], class: 'form-control inline-group', placeholder: 'search users' %>
+			<%= submit_tag 'Submit', class: 'btn btn-default' %>
+			<h3>Users</h3>
+		</div>
+	</div>
+<% end %>
+
+<div class="row">
+	<div class="col-md-6 col-sm-6 fixed-height">
 		<table class="table">
 			<% @courses.each do |course| %>
-				<tr><td><%= course.id %></td><td><%= course.code %></td><td><%= course.title %></td>
+				<tr><td><%= course.id %></td><td><%= course.code %></td><td><%= course.title %></td><td><%= course.dates %></td>
+					<td><%= "#{course.class_lists.count} / #{course.size}" %></td>
 					<td>
-						<%= link_to 'Send', url_for(params.merge(course_id: course.id)), class: 'btn btn-xs btn-default'  %>
+						<%= link_to 'Sign Up', url_for(params.merge(course_id: course.id)), class: 'btn btn-xs btn-default'  %>
 					</td>
 				</tr>
 			<% end %>
 		</table>
 	</div>
-	<div class="col-md-6 col-sm-6">
+	<div class="col-md-6 col-sm-6 fixed-height">
 		<table class="table">
 			<% @users.each do |user| %>
 				<tr><td><%= user.id %></td><td><%= user.name %></td><td><%= user.email %></td>
 					<td>
-						<%= link_to 'Send', url_for(params.merge(user_id: user.id)), class: 'btn btn-xs btn-default'   %>
+						<%= link_to 'Sign Up', url_for(params.merge(user_id: user.id)), class: 'btn btn-xs btn-default'   %>
 					</td>
 				</tr>
 			<% end %>
@@ -44,36 +80,4 @@
 	</div>
 </div>
 
-<hr>
-<h4>Add user to class list</h4>
-<%= form_for(:class_list, url: admin_class_path) do |f| %>
-
-	<div class="top-label">
-		<%= f.label :course_id %>
-		<%= f.number_field :course_id, value: params[:course_id], class: 'form-control inline-group' %>
-	</div>
-	<div class="top-label">
-		<%= f.label :user_id %>
-		<%= f.number_field :user_id, value: params[:user_id], class: 'form-control inline-group' %>
-	</div>
-		<%= f.label :paid %>
-		<%= f.check_box :paid %>
-
-	<%= f.submit 'Add User to Class', class: 'btn btn-primary' %>
-<% end %>
-<hr>
-<h4>Add user to wait list</h4>
-<%= form_for(:wait_list, url: admin_wait_path) do |f| %>
-
-	<div class="top-label">
-		<%= f.label :course_id %>
-		<%= f.number_field :course_id, value: params[:course_id], class: 'form-control inline-group' %>
-	</div>
-	<div class="top-label">
-		<%= f.label :user_id %>
-		<%= f.number_field :user_id, value: params[:user_id], class: 'form-control inline-group' %>
-	</div>
-
-	<%= f.submit 'Add User to Wait List', class: 'btn btn-primary' %>
-<% end %>
 <hr>
