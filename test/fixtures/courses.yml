@@ -8,6 +8,8 @@ cansail:
   boat: Escape
   size: 15
   dates: String
+  start_date: <%= Date.today %>
+  end_date: <%= Date.tomorrow %>
   year: 2015
   price: 300
   title: course
@@ -23,6 +25,8 @@ course_full:
   size: 3
   dates: String
   year: 2015
+  start_date: <%= Date.today %>
+  end_date: <%= Date.tomorrow %>
   price: 300
   title: course
   about: description

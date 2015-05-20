@@ -19,6 +19,28 @@ non_admin:
   phone: 7787091959
   admin: false
   activated: true
+
+unregistered:
+  id: 6
+  name: Jimbo
+  email: unreg@test.ca
+  password_digest: <%= User.digest('password') %>
+  age: 25
+  health_notes: No Notes
+  phone: 7787091959
+  admin: false
+  activated: true
+
+unactivated:
+  id: 5
+  name: Jimbo
+  email: unac@test.ca
+  password_digest: <%= User.digest('password') %>
+  age: 25
+  health_notes: No Notes
+  phone: 7787091959
+  admin: false
+  activated: false
   
 full_2:
   id: 3
