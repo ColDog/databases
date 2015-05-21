@@ -2,43 +2,30 @@
 <p>This page will add a user to a course by their id.</p>
 
 <div class="row">
-	<div class="col-md-6">
-		<h4>Add user to class list</h4>
+	<div class="col-md-8">
+		<div class="well">
+			<h4>User: 	<%= "ID: #{@user.id}, Name: #{@user.name}" unless @user.nil? %></h4>
+			<h4>Course: <%= "ID: #{@course.id}, Title: #{@course.title}" unless @course.nil? %></h4>
+		</div>
+	</div>
+	<div class="col-md-4">
 		<%= form_for(:class_list, url: admin_class_path) do |f| %>
-
-			<div class="top-label">
-				<%= f.label :course_id %>
-				<%= f.number_field :course_id, value: params[:course_id], class: 'form-control inline-group' %>
-			</div>
-			<div class="top-label">
-				<%= f.label :user_id %>
-				<%= f.number_field :user_id, value: params[:user_id], class: 'form-control inline-group' %>
-			</div>
-			<%= f.label :paid %>
-			<%= f.check_box :paid %>
-
+			<%= f.hidden_field :course_id, value: params[:course_id] %>
+			<%= f.hidden_field :user_id, value: params[:user_id] %>
 			<%= f.submit 'Add User to Class', class: 'btn btn-primary' %>
 		<% end %>
-	</div>
-	<div class="col-md-6">
-		<h4>Add user to wait list</h4>
+		<hr>
 		<%= form_for(:wait_list, url: admin_wait_path) do |f| %>
-
-			<div class="top-label">
-				<%= f.label :course_id %>
-				<%= f.number_field :course_id, value: params[:course_id], class: 'form-control inline-group' %>
-			</div>
-			<div class="top-label">
-				<%= f.label :user_id %>
-				<%= f.number_field :user_id, value: params[:user_id], class: 'form-control inline-group' %>
-			</div>
-
+				<%= f.hidden_field :course_id, value: params[:course_id] %>
+				<%= f.hidden_field :user_id, value: params[:user_id] %>
 			<%= f.submit 'Add User to Wait List', class: 'btn btn-primary' %>
 		<% end %>
 	</div>
 </div>
 
 <hr>
+<hr>
+
 <%= form_tag('#', method: :get) do %>
 	<div class="row">
 		<div class="col-md-6 col-sm-6">
