@@ -13,15 +13,15 @@ class AdminController < ApplicationController
 
   def create_user
     @user = User.new(user_params)
-    if @user.save(validate: false)
+    if @user.save # (validate: false)      # todo should the user be validated?
       @user.create_reset_digest
       @user.send_password_reset_email
-      # TODO add send activation email
+      UserMailer.account_activation(@user).deliver_now
       flash[:success] = "Created user with id: #{@user.id} and name: #{@user.name}"
       redirect_to controller: 'admin', action: 'new_class', user_id: @user.id
     else
       flash[:danger] = 'Failed to create user'
-      redirect_to user_path
+      render 'new_user'
     end
   end
 

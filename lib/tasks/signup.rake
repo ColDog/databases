@@ -6,7 +6,13 @@ namespace :db do
       signup = ClassList.new(course_id: c, user_id: u)
       if signup.valid?
         ClassList.create({course_id: c, user_id: u })
+        print '.'
+      else
+        print 'x'
       end
     end
+    puts ' '
+    print 'users successfully signed up'
+    puts ' '
   end
 end

@@ -13,25 +13,25 @@ class AdminCreateTest < ActionDispatch::IntegrationTest
   test 'admin create valid user' do
     log_in_as @admin
     assert_difference 'User.count', +1 do
-      post admin_user_path, user: { name: 'Example User', email: 'user@example.com',
+      post admin_user_url, user: { name: 'Example User', email: 'user@example.com',
                                     phone: '6042247245', password: 'password',
                                     password_confirmation: 'password' }
     end
     user = assigns(:user)
     assert_not user.activated                            # creates unactivated user
-    assert_equal 1, ActionMailer::Base.deliveries.size   # sends a password reset link
+    assert_equal 2, ActionMailer::Base.deliveries.size   # sends a password reset link
   end
 
-  test 'admin create INvalid user OK' do
+  test 'admin fail to create INvalid user' do
     log_in_as @admin
-    assert_difference 'User.count', +1 do                # controller allows invalid user
-      post admin_user_path, user: { name: ' ', email: 'user@example.com',
-                                    phone: ' ', password: 'password',
-                                    password_confirmation: 'password' }
+    assert_no_difference 'User.count' do
+      post admin_user_url, user: { name: 'Example User', email: 'user@example.com',
+                                   phone: '604', password: 'password',
+                                   password_confirmation: 'password23' }
     end
     user = assigns(:user)
-    assert_not user.activated                            # creates unactivated user
-    assert_equal 1, ActionMailer::Base.deliveries.size   # sends a password reset link
+    assert_not user.activated
+    assert_equal 0, ActionMailer::Base.deliveries.size
   end
 
   test 'admin add valid user to course' do

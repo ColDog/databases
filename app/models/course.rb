@@ -2,6 +2,8 @@ class Course < ActiveRecord::Base
   has_many :class_lists, dependent: :destroy
   has_many :wait_lists,  dependent: :destroy
 
+  ## todo add db view for reporting
+
   validates :title,       presence: true, length: { maximum: 244 }
   validates :category,    presence: true
   validates :location,    presence: true
@@ -39,6 +41,7 @@ class Course < ActiveRecord::Base
   def self.youth
     self.where('age_group != ?', 'Adult')
   end
+
 
   private
     def no_errors
