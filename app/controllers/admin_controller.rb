@@ -27,8 +27,10 @@ class AdminController < ApplicationController
   end
 
   def new_class
-    @courses = Course.search(params[:class_search])
-    @users = User.search(params[:user_search])
+    @courses  = Course.search(params[:class_search]).limit(20)
+    @users    = User.search(params[:user_search]).limit(20)
+    @course   = Course.find(params[:course_id]) unless params[:course_id].nil?
+    @user     = User.find(params[:user_id]) unless params[:user_id].nil?
   end
 
   def create_class_list
