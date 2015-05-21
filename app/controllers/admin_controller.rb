@@ -8,12 +8,13 @@ class AdminController < ApplicationController
   end
 
   def new_user
+    @user = User.new
     @password = User.new_token
   end
 
   def create_user
     @user = User.new(user_params)
-    if @user.save # (validate: false)      # todo should the user be validated?
+    if @user.save
       @user.create_reset_digest
       @user.send_password_reset_email
       UserMailer.account_activation(@user).deliver_now

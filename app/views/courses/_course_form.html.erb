@@ -1,5 +1,5 @@
 <%= form_for @course, class: 'alone-form' do |f| %>
-	<%= render 'shared/course_error_messages' %>
+	<%= render 'shared/error_messages', object: f.object %>
 
 	<div class="row">
 		<div class="col-md-3 col-sm-4">
