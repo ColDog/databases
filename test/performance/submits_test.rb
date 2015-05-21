@@ -3,31 +3,31 @@ require 'rails/performance_test_help'
 
 class SubmitsTest < ActionDispatch::PerformanceTest
 
-  def setup
-    @admin = users(:colin)
-  end
-
-  test 'admin create valid user' do
-    log_in_as @admin
-    post admin_user_path, user: { name: 'Example User', email: 'user@example.com',
-                                  phone: '6042247245', password: 'password',
-                                  password_confirmation: 'password' }
-  end
-
-  test 'admin create INvalid user' do
-    log_in_as @admin
-    post admin_user_path, user: { name: ' ', email: 'user@example.com',
-                                  phone: ' ', password: ' ',
-                                  password_confirmation: ' ' }
-  end
-
-  test 'user signup' do
-    post users_path, user: { name:                  'Example User',
-                             email:                 'user@example.com',
-                             phone:                  '6042247245',
-                             password:              'password',
-                             password_confirmation: 'password' }
-  end
+  # def setup
+  #   @admin = users(:colin)
+  # end
+  #
+  # test 'admin create valid user' do
+  #   log_in_as @admin
+  #   post admin_user_path, user: { name: 'Example User', email: 'user@example.com',
+  #                                 phone: '6042247245', password: 'password',
+  #                                 password_confirmation: 'password' }
+  # end
+  #
+  # test 'admin create INvalid user' do
+  #   log_in_as @admin
+  #   post admin_user_path, user: { name: ' ', email: 'user@example.com',
+  #                                 phone: ' ', password: ' ',
+  #                                 password_confirmation: ' ' }
+  # end
+  #
+  # test 'user signup' do
+  #   post users_path, user: { name:                  'Example User',
+  #                            email:                 'user@example.com',
+  #                            phone:                  '6042247245',
+  #                            password:              'password',
+  #                            password_confirmation: 'password' }
+  # end
 
   # test crashes the test suite. Bug?
   # test 'course create' do

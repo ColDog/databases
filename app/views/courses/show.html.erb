@@ -23,7 +23,7 @@
 	</thead>
 <% @course.class_lists.each do |c| %>
 	<tr>
-		<td><%= c.id.to_s %></td>
+		<td><%= @count %></td>
 		<td><%= c.user.name %></td>
 		<td><%= c.user.phone %></td>
 		<td><%= c.user.email %></td>
@@ -44,6 +44,7 @@
 			<%= link_to 'Delete', c, method: :delete, class: 'btn btn-xs btn-default' %>
 		</td>
 	</tr>
+		<% @count += 1 %>
 <% end %>
 </table>
 
@@ -65,7 +66,7 @@
 	</thead>
 	<% @course.wait_lists.each do |c| %>
 		<tr>
-			<td><%= c.id.to_s %></td>
+			<td><%= @count %></td>
 			<td><%= c.user.name %></td>
 			<td><%= c.user.phone %></td>
 			<td><%= c.user.email %></td>
@@ -81,6 +82,7 @@
 				<%= link_to 'Delete', c, method: :delete, class: 'btn btn-xs btn-default' %>
 			</td>
 		</tr>
+		<% @count += 1 %>
 	<% end %>
 </table>
 <hr>

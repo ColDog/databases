@@ -33,7 +33,7 @@ class AdminController < ApplicationController
     @class_list = ClassList.new(class_params)
     if @class_list.save
       flash[:success] = 'User added to class'
-      redirect_to users_path
+      redirect_to course_path(@class_list.course_id)
     else
       flash[:danger] = 'failed to add user to class'
       redirect_to users_path
@@ -44,7 +44,7 @@ class AdminController < ApplicationController
     @wait_list = WaitList.new(wait_params)
     if @wait_list.save
       flash[:success] = 'User added to wait list'
-      redirect_to users_path
+      redirect_to course_path(@wait_list.course_id)
     else
       flash[:danger] = 'failed to add user to wait list'
       redirect_to users_path

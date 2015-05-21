@@ -22,6 +22,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @new_class_list = ClassList.new
     @new_wait_list = WaitList.new
+    @count = 1
   end
 
   def new
