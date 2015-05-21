@@ -16,6 +16,7 @@ class AdminController < ApplicationController
     if @user.save(validate: false)
       @user.create_reset_digest
       @user.send_password_reset_email
+      # TODO add send activation email
       flash[:success] = "Created user with id: #{@user.id} and name: #{@user.name}"
       redirect_to controller: 'admin', action: 'new_class', user_id: @user.id
     else

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
     filter_params(params).each do |search, result|
       @users = @users.public_send(search, result) if result.present?
     end

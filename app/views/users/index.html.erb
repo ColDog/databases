@@ -12,6 +12,8 @@
 	<button class="btn btn-default" type="submit">Search</button>
 <% end %>
 
+<%= paginate @users %>
+
 <table class="table">
 	<thead>
 	<tr>
@@ -51,3 +53,5 @@
 		</tr>
 	<% end %>
 </table>
+
+<%= paginate @users %>

@@ -67,6 +67,11 @@ class UserTest < ActiveSupport::TestCase
     assert(!@user.save) && assert_not(@user.valid?)
   end
 
+  test 'phone number can have other characters' do
+    @user.phone = '604-224-7245'
+    assert(@user.save) && assert(@user.valid?)
+  end
+
   test 'phone number should not be too long' do
     @user.phone = '1234567891011'
     assert(!@user.save) && assert_not(@user.valid?)

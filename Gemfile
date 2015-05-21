@@ -16,6 +16,7 @@ gem 'faker'
 
 gem 'chartkick'
 gem 'groupdate'
+gem 'kaminari'
 
 gem 'rails-perftest'
 gem 'ruby-prof'
