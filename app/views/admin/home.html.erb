@@ -5,13 +5,38 @@
 	<div class="col-md-4">
 		<h4>Registrations</h4>
 		<%= line_chart @registrations %>
+		<hr>
+		<table class="table">
+			<tr><td>Number of Registrations:</td><td><%= ClassList.count %></td></tr>
+		</table>
 	</div>
 	<div class="col-md-4">
 		<h4>Users</h4>
 		<%= line_chart @users %>
+		<hr>
+		<table class="table">
+			<tr><td>Number of users:</td><td><%= User.count %></td></tr>
+			<tr><td>Number of activated users:</td><td><%= User.where(activated: true).count %></td></tr>
+			<tr><td>Number users with signed waiver:</td><td><%= User.where(waiver: true).count %></td></tr>
+			<tr><td>Number of admins:</td><td><%= User.where(admin: true).count %></td></tr>
+		</table>
 	</div>
 	<div class="col-md-4">
-		<h4>Class Size</h4>
+		<h4>Classes</h4>
 		<%= line_chart @class_size.map{|course| {name: course.code, data: course.class_lists.group_by_hour(:created_at).count} } %>
+		<hr>
+		<table class="table">
+			<tr><td>Number of classes:</td><td><%= Course.count %></td></tr>
+			<tr><td>Number of full classes:</td>
+				<td>
+					<% Course.all.each do |course| %>
+						<% if course.size == course.class_lists.count %>
+							<% @full += 1 %>
+						<% end %>
+					<% end %>
+					<%= @full %>
+				</td>
+			</tr>
+		</table>
 	</div>
 </div>

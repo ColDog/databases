@@ -5,6 +5,7 @@ class AdminController < ApplicationController
     @registrations = ClassList.group_by_day(:created_at).count
     @users = User.group_by_day(:created_at).count
     @class_size = Course.all
+    @full = 0
   end
 
   def create_user
