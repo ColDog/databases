@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
 
   #ADMIN ONLY
   def index
-    @courses = Course.all.reverse_order
+    @courses = Course.all
     filter_params(params).each do |search, result|
       @courses = @courses.public_send(search, result) if result.present?
     end
