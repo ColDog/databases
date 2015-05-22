@@ -6,10 +6,12 @@
 		<div class="well">
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
-					<h4>Course</h4><%= "ID: #{@course.id}, Title: #{@course.title}" unless @course.nil? %>
+					<h4><%= @user.name unless @user.nil? %></h4>
+					<p><%= "ID: #{@user.id} | Age: #{@user.age} | Email: #{@user.email}" unless @user.nil? %></p>
 				</div>
 				<div class="col-md-6 col-sm-6">
-					<h4>User</h4><%= "ID: #{@user.id} Name: #{@user.name}" unless @user.nil? %>
+					<h4><%= @course.title unless @course.nil? %></h4>
+					<p><%= "ID: #{@course.id} | Size: #{@course.class_lists.count} / #{@course.size} | Dates: #{@course.dates}" unless @course.nil? %></p>
 				</div>
 			</div>
 		</div>

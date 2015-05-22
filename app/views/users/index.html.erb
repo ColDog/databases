@@ -90,9 +90,9 @@
 			<td>
 				<%= link_to 'Delete', user_path(user), method: :delete,
 											data: {confirm: 'This will delete the user and all their payment and course data.'},
-											class: 'btn btn-xs btn-danger' %>
+											class: 'btn btn-xs btn-default' %>
 				<%= link_to 'View', user_path(user), class: 'btn btn-xs btn-default' %>
-				<%= link_to 'Register', admin_class_path(user_id: user.id), class: 'btn btn-xs btn-primary' %>
+				<%= link_to 'Register', admin_class_path(user_id: user.id), class: 'btn btn-xs btn-default' %>
 			</td>
 		</tr>
 	<% end %>

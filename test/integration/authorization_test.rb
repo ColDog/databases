@@ -49,9 +49,6 @@ class AuthorizationTest < ActionDispatch::IntegrationTest
     get admin_home_path
     assert_redirected_to login_url
 
-    get admin_user_path
-    assert_redirected_to login_url
-
     get admin_class_path
     assert_redirected_to login_url
 

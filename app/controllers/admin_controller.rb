@@ -17,7 +17,7 @@ class AdminController < ApplicationController
       redirect_to controller: 'admin', action: 'new_class', user_id: @user.id
     else
       flash[:danger] = 'Failed to create user'
-      render 'users/index'
+      redirect_to users_path
     end
   end
 
@@ -32,7 +32,7 @@ class AdminController < ApplicationController
 
   def create_class_list
     @class_list = ClassList.new(class_params)
-    if @class_list.save
+    if @class_list.save # (validate: false) todo should be validate false?
       flash[:success] = 'User added to class'
       redirect_to course_path(@class_list.course_id)
     else
@@ -43,7 +43,7 @@ class AdminController < ApplicationController
 
   def create_wait_list
     @wait_list = WaitList.new(wait_params)
-    if @wait_list.save
+    if @wait_list.save # (validate: false) todo should be validate false?
       flash[:success] = 'User added to wait list'
       redirect_to course_path(@wait_list.course_id)
     else
