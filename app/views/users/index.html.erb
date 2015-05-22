@@ -1,5 +1,48 @@
 <h1>Users</h1>
 
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNew" aria-expanded="false" aria-controls="collapseNew">
+	Create New User
+</button>
+<hr>
+<div class="collapse" id="collapseNew">
+	<h4>Create New User</h4>
+	<%= form_for(@user, url: admin_user_path) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<div class="top-label">
+			<%= f.label :name %>
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+		<div class="top-label">
+			<%= f.label :email %>
+			<%= f.email_field :email, class: 'form-control' %>
+		</div>
+		<div class="top-label">
+			<%= f.label :phone %>
+			<%= f.text_field :phone, placeholder: '6042247245', class: 'form-control', maxlength: '10' %>
+		</div>
+		<div class="top-label">
+			<%= f.label :age %>
+			<%= f.number_field :age, class: 'form-control inline-group' %>
+		</div>
+		<div class="top-label">
+			<%= f.label :health_notes %>
+			<%= f.text_field :health_notes, class: 'form-control' %>
+		</div>
+		<%= f.label :waiver %>
+		<%= f.check_box :waiver %>
+		<div class="top-label">
+			<%= f.label :password %>
+			<%= f.password_field :password, value: @password, class: 'form-control inline-group'  %>
+		</div>
+		<div class="top-label">
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation, value: @password, class: 'form-control inline-group'  %>
+		</div>
+		<%= f.submit 'Create User', class: 'btn btn-primary' %>
+	<% end %>
+	<hr>
+</div>
+
 <%= form_tag('#', method: :get, class: 'well') do %>
 	<div class="top-label">
 		<label>Search</label>
@@ -49,6 +92,7 @@
 											data: {confirm: 'This will delete the user and all their payment and course data.'},
 											class: 'btn btn-xs btn-danger' %>
 				<%= link_to 'View', user_path(user), class: 'btn btn-xs btn-default' %>
+				<%= link_to 'Register', admin_class_path(user_id: user.id), class: 'btn btn-xs btn-primary' %>
 			</td>
 		</tr>
 	<% end %>

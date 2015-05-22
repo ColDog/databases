@@ -1,0 +1,39 @@
+<div class="search-bar well">
+	<%= form_tag('#', method: :get, class: 'inline-form') do %>
+		<div class="top-label">
+			<label>Boat</label>
+			<%=select_tag :boat, options_for_select(%w"Pirate Escape Opti Advanced", params[:boat]), include_blank: true, class: 'form-control inline-group' %>
+		</div>
+		<div class="top-label">
+			<label>Location</label>
+			<%=select_tag :location, options_for_select(%w"Jericho Kitsilano", params[:location]), include_blank: true, class: 'form-control inline-group' %>
+		</div>
+		<div class="top-label">
+			<label>Skill Level</label>
+			<%=select_tag :category, options_for_select(%w"Beginner Intermediate Advanced", params[:category]), include_blank: true, class: 'form-control inline-group' %>
+		</div>
+		<div class="top-label">
+			<label>Age</label>
+			<%=select_tag :age_group, options_for_select(%w"5-7 7-10 10-14 11-16 13-18 8-16 Adult", params[:age_group]), include_blank: true, class: 'form-control inline-group' %>
+		</div>
+		<div class="top-label">
+			<label>Starts After</label>
+			<%=date_field_tag :start_date, params[:start_date], class: 'form-control inline-group' %>
+		</div>
+		<div class="top-label">
+			<label>Ends Before</label>
+			<%=date_field_tag :end_date, params[:end_date], class: 'form-control inline-group' %>
+		</div>
+		<div class="top-label">
+			<label>Search</label>
+			<%= text_field_tag :search, params[:search], class: 'form-control inline-group' %>
+		</div>
+
+		<%= hidden_field_tag :user_id, params[:user_id] unless params[:user_id].nil? %>
+		<%= hidden_field_tag :course_id, params[:course_id] unless params[:course_id].nil? %>
+
+		<button class="btn btn-default btn-sm" type="submit">Search</button>
+
+	<% end %>
+
+</div>

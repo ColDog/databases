@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = User.new
+    @password = User.new_token
     @users = User.page(params[:page])
     filter_params(params).each do |search, result|
       @users = @users.public_send(search, result) if result.present?

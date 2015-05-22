@@ -7,11 +7,6 @@ class AdminController < ApplicationController
     @class_size = Course.all
   end
 
-  def new_user
-    @user = User.new
-    @password = User.new_token
-  end
-
   def create_user
     @user = User.new(user_params)
     if @user.save
@@ -22,15 +17,17 @@ class AdminController < ApplicationController
       redirect_to controller: 'admin', action: 'new_class', user_id: @user.id
     else
       flash[:danger] = 'Failed to create user'
-      render 'new_user'
+      render 'users/index'
     end
   end
 
   def new_class
-    @courses  = Course.search(params[:class_search]).limit(20)
-    @users    = User.search(params[:user_search]).limit(20)
+    @user = User.find(params[:user_id])
+    @courses  = Course.search(params[:class_search])
+    filter_params(params).each do |search, result|
+      @courses = @courses.public_send(search, result) if result.present?
+    end
     @course   = Course.find(params[:course_id]) unless params[:course_id].nil?
-    @user     = User.find(params[:user_id]) unless params[:user_id].nil?
   end
 
   def create_class_list

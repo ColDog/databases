@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
   # create users from admin panel
   get         'admin/home'      => 'admin#home'
-  get         'admin/user'      => 'admin#new_user'
   post        'admin/user'      => 'admin#create_user'
   get         'admin/class'     => 'admin#new_class'
   post        'admin/class'     => 'admin#create_class_list'
