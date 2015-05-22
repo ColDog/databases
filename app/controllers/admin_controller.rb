@@ -16,7 +16,7 @@ class AdminController < ApplicationController
       flash[:success] = "Created user with id: #{@user.id} and name: #{@user.name}"
       redirect_to controller: 'admin', action: 'new_class', user_id: @user.id
     else
-      flash[:danger] = 'Failed to create user'
+      flash[:danger] = "Failed: #{@user.errors.full_messages.each { |m| "#{m}," } }"
       redirect_to users_path
     end
   end
